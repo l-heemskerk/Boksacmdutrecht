@@ -1,111 +1,170 @@
-import { Activity, LearningOutcome, learningOutcomeLabels, learningOutcomeColors } from '../types/curriculum';
-import { ActivityCard } from './ActivityCard';
-import { LearningOutcomeProgressionCard } from './LearningOutcomeProgressionCard';
-import { LearningOutcomeDetailsSection } from './LearningOutcomeDetailsSection';
+import { LearningOutcome, learningOutcomeLabels, learningOutcomeColors } from '../types/curriculum';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { getProgressionsByOutcome } from '../data/learningOutcomeProgressions';
-import { Separator } from './ui/separator';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
+import { Info } from 'lucide-react';
 
 interface LearningOutcomeViewProps {
-  activities: Activity[];
   searchQuery: string;
 }
 
-export function LearningOutcomeView({ activities, searchQuery }: LearningOutcomeViewProps) {
+export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
   const outcomes: LearningOutcome[] = ['context', 'ontwerpen', 'prototype', 'verbinden', 'reflecteren'];
 
-  const getActivitiesForOutcome = (outcome: LearningOutcome) => {
-    let filtered = activities.filter(activity => activity.learningOutcomes.includes(outcome));
-
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(activity => 
-        activity.name.toLowerCase().includes(query) ||
-        activity.semester.toString().includes(query)
-      );
+  // Function to highlight new text additions between semesters
+  const getNewWords = (currentText: string, previousText?: string): string[] => {
+    if (!previousText) return [];
+    
+    const currentWords = currentText.toLowerCase().split(/\s+/);
+    const previousWords = previousText.toLowerCase().split(/\s+/);
+    
+    // Find words/phrases that are new
+    const newPhrases: string[] = [];
+    let i = 0;
+    
+    while (i < currentWords.length) {
+      let foundInPrevious = false;
+      for (let j = 0; j < previousWords.length; j++) {
+        if (currentWords[i] === previousWords[j]) {
+          foundInPrevious = true;
+          break;
+        }
+      }
+      
+      if (!foundInPrevious && currentWords[i].length > 3) {
+        newPhrases.push(currentWords[i]);
+      }
+      i++;
     }
+    
+    return newPhrases;
+  };
 
-    return filtered.sort((a, b) => a.semester - b.semester);
+  const highlightText = (text: string, wordsToHighlight: string[]) => {
+    if (wordsToHighlight.length === 0) return text;
+    
+    const parts = text.split(/(\s+)/);
+    return parts.map((part, idx) => {
+      const cleanPart = part.toLowerCase().replace(/[.,;:!?]/g, '');
+      if (wordsToHighlight.some(word => cleanPart.includes(word))) {
+        return (
+          <mark key={idx} className="bg-yellow-200 px-1 rounded">
+            {part}
+          </mark>
+        );
+      }
+      return part;
+    });
   };
 
   return (
-    <Tabs defaultValue="context" className="w-full">
-      <TabsList className="grid w-full grid-cols-5">
-        {outcomes.map((outcome) => (
-          <TabsTrigger key={outcome} value={outcome}>
-            {learningOutcomeLabels[outcome]}
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="bg-white rounded-lg border-2 border-blue-600 p-6">
+        <h2 className="text-gray-900 mb-2">Opbouw Leeruitkomsten</h2>
+        <div className="flex items-start gap-3">
+          <Info className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+          <p className="text-gray-600">
+            Bekijk hoe elke leeruitkomst zich ontwikkelt door de semesters heen. 
+            <span className="ml-2 bg-yellow-200 px-2 py-0.5 rounded">
+              Gemarkeerde tekst
+            </span> toont nieuwe onderdelen ten opzichte van het vorige semester.
+          </p>
+        </div>
+      </div>
+
+      <Tabs defaultValue="context" className="w-full">
+        <TabsList className="grid w-full grid-cols-5 mb-6 h-auto p-1 bg-white border-2 border-gray-200">
+          <TabsTrigger 
+            value="context"
+            className="py-3 data-[state=active]:bg-blue-100 data-[state=active]:text-blue-800 data-[state=active]:border-blue-200"
+          >
+            {learningOutcomeLabels.context}
           </TabsTrigger>
-        ))}
-      </TabsList>
+          <TabsTrigger 
+            value="ontwerpen"
+            className="py-3 data-[state=active]:bg-purple-100 data-[state=active]:text-purple-800 data-[state=active]:border-purple-200"
+          >
+            {learningOutcomeLabels.ontwerpen}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="prototype"
+            className="py-3 data-[state=active]:bg-green-100 data-[state=active]:text-green-800 data-[state=active]:border-green-200"
+          >
+            {learningOutcomeLabels.prototype}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="verbinden"
+            className="py-3 data-[state=active]:bg-orange-100 data-[state=active]:text-orange-800 data-[state=active]:border-orange-200"
+          >
+            {learningOutcomeLabels.verbinden}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="reflecteren"
+            className="py-3 data-[state=active]:bg-pink-100 data-[state=active]:text-pink-800 data-[state=active]:border-pink-200"
+          >
+            {learningOutcomeLabels.reflecteren}
+          </TabsTrigger>
+        </TabsList>
 
-      {outcomes.map((outcome) => {
-        const outcomActivities = getActivitiesForOutcome(outcome);
-        const progressions = getProgressionsByOutcome(outcome);
+        {outcomes.map((outcome) => {
+          const progressions = getProgressionsByOutcome(outcome);
+          const filteredProgressions = searchQuery
+            ? progressions.filter(p => 
+                p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                p.semesterName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                p.semester.toString().includes(searchQuery)
+              )
+            : progressions;
 
-        return (
-          <TabsContent key={outcome} value={outcome} className="mt-6">
-            <div className="mb-6">
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg ${learningOutcomeColors[outcome]}`}>
-                <h2>{learningOutcomeLabels[outcome]}</h2>
+          return (
+            <TabsContent key={outcome} value={outcome} className="mt-6">
+              <div className="mb-6">
+                <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg ${learningOutcomeColors[outcome]}`}>
+                  <h3>{learningOutcomeLabels[outcome]}</h3>
+                </div>
               </div>
-              <p className="text-gray-600 mt-2">Ontwikkeling van deze leeruitkomst door de semesters heen</p>
-            </div>
 
-            {/* Kennis en Vaardigheden */}
-            <div className="mb-8">
-              <h3 className="mb-4 text-gray-900">Kennis en Vaardigheden</h3>
-              <LearningOutcomeDetailsSection outcome={outcome} />
-            </div>
+              {/* Leeruitkomst progressie - Single column */}
+              <div className="space-y-4">
+                {filteredProgressions.map((progression, index) => {
+                  const previousProgression = index > 0 ? filteredProgressions[index - 1] : undefined;
+                  const newWords = previousProgression 
+                    ? getNewWords(progression.description, previousProgression.description)
+                    : [];
 
-            <Separator className="my-8" />
-
-            {/* Leeruitkomst progressie */}
-            <div className="mb-8">
-              <h3 className="mb-4 text-gray-900">Opbouw per semester</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {progressions.map((progression) => (
-                  <LearningOutcomeProgressionCard
-                    key={`${progression.semester}-${progression.outcome}`}
-                    progression={progression}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <Separator className="my-8" />
-
-            {/* Onderwijsactiviteiten */}
-            <div>
-              <h3 className="mb-4 text-gray-900">
-                Onderwijsactiviteiten ({outcomActivities.length})
-              </h3>
-              <div className="space-y-6">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map(semester => {
-                  const semesterActivities = outcomActivities.filter(a => a.semester === semester);
-                  if (semesterActivities.length === 0) return null;
+                  const borderColorMap: Record<LearningOutcome, string> = {
+                    context: '#DBEAFE',
+                    ontwerpen: '#E9D5FF',
+                    prototype: '#D1FAE5',
+                    verbinden: '#FED7AA',
+                    reflecteren: '#FCE7F3'
+                  };
 
                   return (
-                    <div key={semester}>
-                      <h4 className="mb-3 text-gray-600">
-                        Semester {semester}
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {semesterActivities.map((activity) => (
-                          <ActivityCard
-                            key={activity.id}
-                            activity={activity}
-                            highlightOutcome={outcome}
-                          />
-                        ))}
-                      </div>
-                    </div>
+                    <Card key={`${progression.semester}-${progression.outcome}`} className="border-l-4" style={{ borderLeftColor: borderColorMap[progression.outcome] }}>
+                      <CardHeader>
+                        <div className="flex items-center justify-between">
+                          <CardTitle>Semester {progression.semester}</CardTitle>
+                          <Badge variant="outline" className={learningOutcomeColors[progression.outcome]}>
+                            {progression.semesterName}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700 leading-relaxed">
+                          {highlightText(progression.description, newWords)}
+                        </p>
+                      </CardContent>
+                    </Card>
                   );
                 })}
               </div>
-            </div>
-          </TabsContent>
-        );
-      })}
-    </Tabs>
+            </TabsContent>
+          );
+        })}
+      </Tabs>
+    </div>
   );
 }

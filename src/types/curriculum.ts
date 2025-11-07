@@ -18,17 +18,33 @@ export interface Activity {
   id: string;
   name: string;
   duration: string;
+  description?: string;
   semester: number;
   learningOutcomes: LearningOutcome[];
   competencies: Competency[];
   learningOutcomeDetails?: LearningOutcomeDetail[];
 }
 
+export interface Specialization {
+  id: string;
+  name: string;
+  description?: string;
+  activities: Activity[];
+}
+
 export interface Semester {
   number: number;
   name: string;
   year: number;
+  level: string;
   activities: Activity[];
+  specializations?: Specialization[];
+  professionalProducts?: ProfessionalProduct[];
+}
+
+export interface ProfessionalProduct {
+  outcome: LearningOutcome;
+  description: string;
 }
 
 export interface LearningOutcomeProgression {

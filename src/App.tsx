@@ -3,103 +3,98 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
 import { SemesterView } from './components/SemesterView';
 import { LearningOutcomeView } from './components/LearningOutcomeView';
 import { CompetencyView } from './components/CompetencyView';
-import { FilterPanel } from './components/FilterPanel';
+import { HelpDialog } from './components/HelpDialog';
 import { semesters, mockActivities } from './data/mockData';
-import { BookOpen, Target, Lightbulb } from 'lucide-react';
+import { BookOpen, Layers, TrendingUp } from 'lucide-react';
+import cmdLogo from 'figma:asset/68e356bfb1ce5a4466aa3dede71306cadf1e68d2.png';
+import { CompetencyType } from './types/curriculum';
 
 export default function App() {
   const [selectedOutcomes, setSelectedOutcomes] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [activeView, setActiveView] = useState('semester');
+  const [selectedCompetencies, setSelectedCompetencies] = useState<CompetencyType[]>([]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <header className="bg-white border-b-4 border-blue-600 sticky top-0 z-10 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-3">
-            <BookOpen className="w-8 h-8 text-blue-600" />
-            <div>
-              <h1 className="text-gray-900">CMD Utrecht Curriculum</h1>
-              <p className="text-gray-600 mt-1">
-                8 semesters · 4 jaar · 5 leeruitkomsten
-              </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <img 
+                src={cmdLogo} 
+                alt="CMD Utrecht Logo" 
+                className="h-16 w-auto"
+              />
+              <div>
+                <h1 className="text-gray-900">BoKSA CMD Utrecht</h1>
+              </div>
             </div>
+            <HelpDialog />
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Filter Sidebar */}
-          <aside className="lg:col-span-1">
-            <FilterPanel
+        <Tabs defaultValue="semester" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-6 h-auto p-1 bg-white border-2 border-gray-200 shadow-md">
+            <TabsTrigger 
+              value="semester" 
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3"
+            >
+              <Layers className="w-4 h-4" />
+              Per Semester
+            </TabsTrigger>
+            <TabsTrigger 
+              value="competency" 
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3"
+            >
+              <TrendingUp className="w-4 h-4" />
+              Competenties
+            </TabsTrigger>
+            <TabsTrigger 
+              value="outcome" 
+              className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3"
+            >
+              <BookOpen className="w-4 h-4" />
+              Opbouw Leeruitkomsten
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="semester">
+            <SemesterView
+              semesters={semesters}
               selectedOutcomes={selectedOutcomes}
               searchQuery={searchQuery}
+              selectedCompetencies={selectedCompetencies}
               onOutcomeChange={setSelectedOutcomes}
               onSearchChange={setSearchQuery}
-              showOutcomeFilter={activeView !== 'outcome'}
+              onCompetencyChange={setSelectedCompetencies}
             />
-          </aside>
+          </TabsContent>
 
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <Tabs value={activeView} onValueChange={setActiveView} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-6">
-                <TabsTrigger value="semester" className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" />
-                  Per Semester
-                </TabsTrigger>
-                <TabsTrigger value="outcome" className="flex items-center gap-2">
-                  <Target className="w-4 h-4" />
-                  Per Leeruitkomst
-                </TabsTrigger>
-                <TabsTrigger value="competency" className="flex items-center gap-2">
-                  <Lightbulb className="w-4 h-4" />
-                  Per Competentie
-                </TabsTrigger>
-              </TabsList>
+          <TabsContent value="competency">
+            <CompetencyView
+              activities={mockActivities}
+              searchQuery={searchQuery}
+            />
+          </TabsContent>
 
-              <TabsContent value="semester">
-                <div className="mb-4">
-                  <p className="text-gray-600">
-                    Overzicht van alle onderwijsactiviteiten georganiseerd per semester
-                  </p>
-                </div>
-                <SemesterView
-                  semesters={semesters}
-                  selectedOutcomes={selectedOutcomes}
-                  searchQuery={searchQuery}
-                />
-              </TabsContent>
-
-              <TabsContent value="outcome">
-                <div className="mb-4">
-                  <p className="text-gray-600">
-                    Bekijk de opbouw van elke leeruitkomst door de semesters heen
-                  </p>
-                </div>
-                <LearningOutcomeView
-                  activities={mockActivities}
-                  searchQuery={searchQuery}
-                />
-              </TabsContent>
-
-              <TabsContent value="competency">
-                <div className="mb-4">
-                  <p className="text-gray-600">
-                    Zie de progressie van kennis, vaardigheden en houding door het curriculum
-                  </p>
-                </div>
-                <CompetencyView
-                  activities={mockActivities}
-                  selectedOutcomes={selectedOutcomes}
-                  searchQuery={searchQuery}
-                />
-              </TabsContent>
-            </Tabs>
-          </div>
-        </div>
+          <TabsContent value="outcome">
+            <LearningOutcomeView
+              searchQuery={searchQuery}
+            />
+          </TabsContent>
+        </Tabs>
       </main>
+
+      {/* Footer */}
+      <footer className="mt-16 bg-white border-t-2 border-blue-600 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-gray-600">
+            © {new Date().getFullYear()} CMD Utrecht - Communication & Multimedia Design
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
