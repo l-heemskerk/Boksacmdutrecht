@@ -25,7 +25,7 @@ export function HelpDialog() {
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview">Overzicht</TabsTrigger>
             <TabsTrigger value="tabs">Tabs</TabsTrigger>
-            <TabsTrigger value="filters">Filters</TabsTrigger>
+            <TabsTrigger value="export">Export</TabsTrigger>
             <TabsTrigger value="begrippen">Begrippen</TabsTrigger>
           </TabsList>
 
@@ -36,32 +36,93 @@ export function HelpDialog() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <p className="text-gray-700">
-                  De opleiding CMD Utrecht leidt studenten op tot mensgerichte ontwerpers, gebaseerd op het Design Thinking Framework. 
+                  De opleiding CMD Utrecht leidt studenten op tot mensgerichte ontwerpers, gebaseerd op het{' '}
+                  <a 
+                    href="https://www.vereniginghogescholen.nl/system/profiles/documents/000/000/277/original/Communication___Multimedia_Design_-_Beroeps-_en_competentieprofiel.pdf?1657700622"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 underline"
+                  >
+                    INCMD competentieprofiel
+                  </a>. 
                   Onderzoekend vermogen speelt een centrale rol in het curriculum en is uitgewerkt in vijf leeruitkomsten: Context, 
                   Ontwerp/Concept, Prototype/Testen, Verbinden en Leren/Reflecteren.
                 </p>
                 <p className="text-gray-700">
-                  Het Development Oriented Triangulation Framework (DOT) vormt hierbij het uitgangspunt, met aandacht voor het 'Wat', 
+                  Het{' '}
+                  <a 
+                    href="https://cmdmethods.nl/about/more-info"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 underline"
+                  >
+                    Development Oriented Triangulation Framework (DOT)
+                  </a>{' '}
+                  vormt hierbij het uitgangspunt, met aandacht voor het 'Wat', 
                   'Waarom' en 'Hoe' van ontwerpend onderzoek. Deze elementen zijn concreet vertaald in deze interactieve BOKSA 
                   (Body of Knowledge, Skills and Attitudes), welke met enige regelmaat wordt geüpdatet.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                  <div className="p-3 bg-blue-50 rounded-lg">
-                    <h4 className="text-blue-900 mb-1">8 Semesters</h4>
-                    <p className="text-gray-700 text-sm">BASE, CHALLENGE, EXPLORE, CONNECT, en Jaar 3 & 4</p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="export" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  📊 Data Export & GitHub
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-gray-900">Download Opties</h4>
+                  <p className="text-gray-700 text-sm">
+                    Gebruik de "Download" knop om het curriculum te exporteren in verschillende formaten:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
+                    <li><strong>Excel (.xlsx)</strong> - Met 4 tabbladen: Jaar 1 & 2, Specialisaties, Praktijk & Afstuderen, en Opbouw Leeruitkomsten</li>
+                    <li><strong>CSV (.csv)</strong> - Eenvoudig formaat voor data-analyse en versiebeheer</li>
+                    <li><strong>JSON (.json)</strong> - Gestructureerde data voor programmatisch gebruik</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 pt-3 border-t">
+                  <h4 className="text-gray-900">CSV voor GitHub</h4>
+                  <p className="text-gray-700 text-sm">
+                    Een statische CSV is beschikbaar voor version control. Deze bevat activiteitnamen bij elke competentie voor betere traceerbaarheid.
+                  </p>
+                  <div className="bg-blue-50 p-3 rounded-md border border-blue-200 mt-2">
+                    <p className="text-sm text-blue-900">
+                      <strong>💡 Tip:</strong> Gebruik de groene "📊 CSV" knop in de header om de statische CSV te downloaden. 
+                      Deze kan je committen naar je GitHub repository om curriculum wijzigingen bij te houden.
+                    </p>
                   </div>
-                  <div className="p-3 bg-green-50 rounded-lg">
-                    <h4 className="text-green-900 mb-1">5 Leeruitkomsten</h4>
-                    <p className="text-gray-700 text-sm">Context, Ontwerpen, Prototype, Verbinden, Reflecteren</p>
-                  </div>
-                  <div className="p-3 bg-orange-50 rounded-lg">
-                    <h4 className="text-orange-900 mb-1">3 Competenties</h4>
-                    <p className="text-gray-700 text-sm">Kennis, Vaardigheden, Houding</p>
-                  </div>
-                  <div className="p-3 bg-purple-50 rounded-lg">
-                    <h4 className="text-purple-900 mb-1">Opbouw</h4>
-                    <p className="text-gray-700 text-sm">Van basis naar gevorderd, met toenemende complexiteit</p>
-                  </div>
+                </div>
+
+                <div className="space-y-2 pt-3 border-t">
+                  <h4 className="text-gray-900">CSV Structuur</h4>
+                  <p className="text-gray-700 text-sm">
+                    De CSV bevat deze kolommen:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
+                    <li>Semester, Semester Naam, Specialisatie, Jaar, Niveau</li>
+                    <li>Leeruitkomst (context, ontwerpen, prototype, verbinden, reflecteren)</li>
+                    <li>Kennis items met activiteitnaam tussen haakjes</li>
+                    <li>Vaardigheden items met activiteitnaam tussen haakjes</li>
+                    <li>Houding items (generiek per semester)</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 pt-3 border-t">
+                  <h4 className="text-gray-900">Export Opties</h4>
+                  <p className="text-gray-700 text-sm">
+                    Gebruik de <strong>Exporteer</strong> knop in de header om alle curriculumdata te downloaden:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
+                    <li><strong>Excel:</strong> Volledig overzicht met alle tabbladen</li>
+                    <li><strong>CSV:</strong> Platte data voor versiebeheer en analyse</li>
+                    <li><strong>JSON:</strong> Gestructureerde data voor ontwikkelaars</li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
@@ -92,7 +153,7 @@ export function HelpDialog() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-600" />
-                  Competenties
+                  Leerlijnen
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -124,35 +185,6 @@ export function HelpDialog() {
                   <li>Gemarkeerde tekst toont nieuwe onderdelen per semester</li>
                   <li>Zie de progressie van basis naar gevorderd niveau</li>
                 </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="filters" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Filtermogelijkheden</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="space-y-2">
-                  <h4 className="text-gray-900">Zoekfunctie</h4>
-                  <p className="text-gray-700 text-sm">
-                    Zoek op activiteitnamen, semester namen of niveaus. De zoekfunctie werkt real-time en filtert direct de resultaten.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-gray-900">Leeruitkomsten Filter</h4>
-                  <p className="text-gray-700 text-sm">
-                    Selecteer één of meerdere leeruitkomsten om alleen relevante activiteiten en producten te zien. 
-                    Klik op "Wis" om alle filters te verwijderen.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-gray-900">Competenties Filter</h4>
-                  <p className="text-gray-700 text-sm">
-                    Filter op Kennis, Vaardigheden of Houding om specifieke competenties te bekijken.
-                  </p>
-                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -203,13 +235,13 @@ export function HelpDialog() {
                       <span className="text-gray-900">Ontwerpen:</span> Concepten en oplossingen ontwerpen
                     </div>
                     <div className="p-2 bg-green-50 rounded text-sm">
-                      <span className="text-gray-900">Prototype:</span> Uitwerken en testen van prototypes
+                      <span className="text-gray-900">Prototype & testen:</span> Uitwerken en testen van prototypes
                     </div>
                     <div className="p-2 bg-yellow-50 rounded text-sm">
                       <span className="text-gray-900">Verbinden:</span> Samenwerken en communiceren
                     </div>
                     <div className="p-2 bg-purple-50 rounded text-sm">
-                      <span className="text-gray-900">Reflecteren:</span> Kritisch reflecteren en evalueren
+                      <span className="text-gray-900">Leren & reflecteren:</span> Kritisch reflecteren en evalueren
                     </div>
                   </div>
                 </div>

@@ -129,36 +129,100 @@ export const learningOutcomeProgressions: LearningOutcomeProgression[] = [
     description: 'Je geeft richting aan je eigen leerproces vanuit een gewenste professionele identiteit en een visie op het CMD-vakgebied. Daarbij betrekt je actief en op je eigen initiatief docenten, experts en peers. Je neemt verantwoordelijkheid voor je leerproces door effectief te reflecteren.'
   },
   
-  // JAAR 3 EN 4 - Semester 5-8
+  // Praktijk - Semester 5
   {
     semester: 5,
-    semesterName: 'JAAR 3 EN 4',
+    semesterName: 'Praktijk',
     outcome: 'context',
-    description: 'Je kunt zelf ontwerpen de context van het probleem analyseren. Hierbij gebruik je beargumenteerd methoden en technieken uit de technologie in kaart brengen en begrijpen. Je hebt een onderscheidende houding en je bent, je hebt oog voor de maatschappelijke. Hierbij werk je vanuit jouw eigen visie als ontwerper.'
+    description: 'Je past kennis en vaardigheden toe in een professionele werkomgeving. Je analyseert bedrijfsprocessen en stakeholder behoeften, en voert onderzoek uit dat relevant is voor de praktijkopdracht.'
   },
   {
     semester: 5,
-    semesterName: 'JAAR 3 EN 4',
+    semesterName: 'Praktijk',
     outcome: 'ontwerpen',
-    description: 'Je kunt op basis van inzichten uit je onderzoek iteratief tot passende concepten komen, hierbij rekening houdend met de belanghebbenden en/of organisatie. Je kunt verschillende (analoge en/of digitale) mogelijkheden en technieken gebruiken. Hierbij de impact van concepten en consequenties ontwikkelbaar zijn toe. Je selecteert bestand en eigen ontwerpstrategieën en -methoden en zet deze in. Je kunt zelfstandig en initiatiefrijk tot ontwerpen, inrichten, plannen, uitvoeren, monitoren en beheren.'
+    description: 'Je werkt volgens professionele ontwerpstandaarden en -processen. Je ontwikkelt oplossingen die aansluiten bij de bedrijfsdoelen en gebruikersbehoeften van de organisatie waar je stage loopt.'
   },
   {
     semester: 5,
-    semesterName: 'JAAR 3 EN 4',
+    semesterName: 'Praktijk',
     outcome: 'prototype',
-    description: 'Je geeft concepten vorm en concretiseert deze producten in passende mate van uitwerking. Je maakt prototypes die eist concepten kunnen evalueren en helpen om keuzes te maken. Je past evaluatiemethodieken toe en onderzoek maatschappelijke effecten en waarden vast. Je presenteert resultaten op het juiste moment en op manieren die verschillende stadia van het ontwerpproces zijn ontstaan op hun waarde voor de belanghebben.'
+    description: 'Je maakt prototypes volgens bedrijfsstandaarden en test deze met echte gebruikers. Je presenteert je werk professioneel aan stakeholders en opdrachtgevers.'
   },
   {
     semester: 5,
-    semesterName: 'JAAR 3 EN 4',
+    semesterName: 'Praktijk',
+    outcome: 'verbinden',
+    description: 'Je werkt samen in een professioneel team, communiceert effectief met collega\'s en stakeholders, en bouwt aan je professionele netwerk.'
+  },
+  {
+    semester: 5,
+    semesterName: 'Praktijk',
+    outcome: 'reflecteren',
+    description: 'Je reflecteert op je praktijkervaring, stelt leerdoelen voor je professionele ontwikkeling en werkt aan je persoonlijke groei als CMD-professional.'
+  },
+  
+  // Semester Specialisatie - Semester 6
+  {
+    semester: 6,
+    semesterName: 'Semester Specialisatie',
+    outcome: 'context',
+    description: 'Je verdiept je in de context van je gekozen specialisatie en past geavanceerde onderzoeksmethoden toe die specifiek zijn voor je vakgebied.'
+  },
+  {
+    semester: 6,
+    semesterName: 'Semester Specialisatie',
+    outcome: 'ontwerpen',
+    description: 'Je ontwikkelt specialistische ontwerpvaardigheden en creëert oplossingen die kenmerkend zijn voor je gekozen richting binnen CMD.'
+  },
+  {
+    semester: 6,
+    semesterName: 'Semester Specialisatie',
+    outcome: 'prototype',
+    description: 'Je maakt geavanceerde prototypes met specialistische tools en technieken, en test deze op een professionele manier.'
+  },
+  {
+    semester: 6,
+    semesterName: 'Semester Specialisatie',
+    outcome: 'verbinden',
+    description: 'Je werkt samen met specialisten uit je vakgebied en communiceert vakkundig over specialistische onderwerpen.'
+  },
+  {
+    semester: 6,
+    semesterName: 'Semester Specialisatie',
+    outcome: 'reflecteren',
+    description: 'Je ontwikkelt een duidelijke visie op je specialisatie binnen CMD en stuurt je eigen ontwikkeling in deze richting.'
+  },
+  
+  // Afstuderen - Semester 7-8
+  {
+    semester: 7,
+    semesterName: 'Afstuderen',
+    outcome: 'context',
+    description: 'Je kunt zelfstandig de context van een complex probleem analyseren. Hierbij gebruik je beargumenteerd methoden en technieken uit onderzoek om de technologie in kaart te brengen en begrijpen. Je hebt een onderscheidende houding en oog voor maatschappelijke impact. Hierbij werk je vanuit jouw eigen visie als ontwerper.'
+  },
+  {
+    semester: 7,
+    semesterName: 'Afstuderen',
+    outcome: 'ontwerpen',
+    description: 'Je kunt op basis van inzichten uit je onderzoek iteratief tot passende concepten komen, hierbij rekening houdend met de belanghebbenden en/of organisatie. Je selecteert zelfstandig eigen ontwerpstrategieën en -methoden en zet deze in. Je kunt zelfstandig en initiatiefrijk ontwerpen, inrichten, plannen, uitvoeren, monitoren en beheren.'
+  },
+  {
+    semester: 7,
+    semesterName: 'Afstuderen',
+    outcome: 'prototype',
+    description: 'Je geeft concepten vorm en concretiseert deze in producten met passende mate van uitwerking. Je maakt prototypes die concepten kunnen evalueren en helpen om keuzes te maken. Je past evaluatiemethodieken toe en onderzoekt maatschappelijke effecten en waarden. Je presenteert resultaten op het juiste moment en op manieren die passen bij verschillende stadia van het ontwerpproces.'
+  },
+  {
+    semester: 7,
+    semesterName: 'Afstuderen',
     outcome: 'verbinden',
     description: 'Je opereert in verschillende contexten en weet verschillende belangen van team, opdrachtgever, community, maatschappij, rollen en disciplines met elkaar te verbinden. Je initieert een constructieve dialoog waar je consistente feedback geeft, verzamelt en verwerkt. Je maakt jouw proces inzichtelijk en overdraagbaar.'
   },
   {
-    semester: 5,
-    semesterName: 'JAAR 3 EN 4',
+    semester: 7,
+    semesterName: 'Afstuderen',
     outcome: 'reflecteren',
-    description: 'Je hebt visie op het CMD-vakgebied, je weet waar je staat en waar je heen wilt. Zelfstandig verder ontwikkelt. Je organiseert en leert (mede) door gebruik van feedback en eigen leerstrategie. Je organiseert feedback en eigen leerstrategieën.'
+    description: 'Je hebt visie op het CMD-vakgebied, je weet waar je staat en waar je heen wilt. Je ontwikkelt jezelf zelfstandig verder. Je organiseert en stuurt je eigen leerproces door gebruik van feedback en eigen leerstrategieën.'
   }
 ];
 

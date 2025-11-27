@@ -114,6 +114,87 @@ const houdingData: HoudingData[] = [
     semester: 4,
     outcome: 'reflecteren',
     description: 'Studenten ontwikkelen zelfreflectie over hun professionele identiteit en toekomstige ontwikkeling. Ze tonen leiderschapsmentaliteit in hun eigen leerproces en inspireren anderen door hun leerhouding. Ze verbinden persoonlijke passies met professionele doelen en tonen intrinsieke motivatie en ontwikkeling als CMD\'er.'
+  },
+
+  // Jaar 3, Semester 5 (Praktijk)
+  {
+    semester: 5,
+    outcome: 'context',
+    description: 'De student toont een professionele, nieuwsgierige en onderzoekende houding binnen de organisatie. Hij/zij verdiept zich actief in processen, gebruikers en stakeholders, vraagt door waar nodig en houdt rekening met organisatorische belangen en beperkingen. De student gaat zorgvuldig om met verwachtingen en toont verantwoordelijkheid voor de kwaliteit en zorgvuldigheid van de contextanalyse.'
+  },
+  {
+    semester: 5,
+    outcome: 'ontwerpen',
+    description: 'De student ontwerpt met eigenaarschap en autonomie. Hij/zij maakt bewuste keuzes op basis van onderzoek en feedback, toont creativiteit binnen realistische kaders en blijft flexibel bij veranderende prioriteiten. De student durft een duidelijke richting voor te stellen, maar staat open voor expertise van collega\'s en de visie van de organisatie.'
+  },
+  {
+    semester: 5,
+    outcome: 'prototype',
+    description: 'De student toont een lerende, iteratieve houding: durft aannames te toetsen, organiseert tests passend bij de praktijk en verwerkt testresultaten eerlijk en nauwkeurig. De student gaat professioneel om met feedback, ook wanneer deze kritisch is, en past ontwerpen transparant aan op basis van bevindingen.'
+  },
+  {
+    semester: 5,
+    outcome: 'verbinden',
+    description: 'De student communiceert professioneel met collega\'s, opdrachtgevers en andere betrokkenen. Hij/zij stemt actief af, zoekt samenwerking op en bewaakt een constructieve, respectvolle werkrelatie. De student draagt verantwoordelijkheid binnen het team, vraagt tijdig hulp en geeft en ontvangt feedback op een volwassen manier.'
+  },
+  {
+    semester: 5,
+    outcome: 'reflecteren',
+    description: 'De student neemt regie over zijn/haar eigen ontwikkeling binnen de organisatie. Hij/zij stelt zelf leerdoelen op, vraagt actief om feedback en reflecteert realistisch op eigen handelen. De student toont zelfbewustzijn, bekijkt fouten als leerkansen en verbindt persoonlijke groei zichtbaar aan de professionele context van de stage.'
+  },
+
+  // Jaar 3, Semester 6 (Specialisaties)
+  {
+    semester: 6,
+    outcome: 'context',
+    description: 'Studenten analyseren complexe ontwerpvraagstukken vanuit meerdere perspectieven (gebruiker, organisatie en maatschappij) en tonen kritisch en ethisch bewustzijn in hun keuzes. Ze positioneren zichzelf als kritische, nieuwsgierige en betrouwbare ontwerper die durft te bevragen en te reflecteren op de onderliggende waarden in een project.'
+  },
+  {
+    semester: 6,
+    outcome: 'ontwerpen',
+    description: 'Studenten ontwerpen autonoom en met visie. Ze durven bestaande patronen te doorbreken en onderbouwen hun keuzes vanuit onderzoek en maatschappelijke relevantie. Ze balanceren met de ontwerpen tussen creatieve vrijheid en realistische haalbaarheid. Hierbij tonen ze zelfbewustzijn en verantwoordelijkheid voor de consequenties van hun ontwerp.'
+  },
+  {
+    semester: 6,
+    outcome: 'prototype',
+    description: 'Studenten hanteren een strategische, iteratieve en reflectieve testhouding. Ze stellen kritische vragen bij aannames om beslissingen te onderbouwen en betrekken gebruikers actief in hun evaluaties. Ze tonen volharding, eerlijkheid en flexibiliteit in het omgaan met feedback en resultaten, ook wanneer deze hun ontwerp uitdagen.'
+  },
+  {
+    semester: 6,
+    outcome: 'verbinden',
+    description: 'Studenten nemen een leidende en verbindende rol in multidisciplinaire teams. Ze communiceren professioneel, transparant en empathisch, en stemmen belangen van verschillende stakeholders af. Ze tonen openheid voor diversiteit, steunen peers, en bewaken een veilige, constructieve feedbackcultuur. Hun houding kenmerkt zich door betrouwbaarheid, authenticiteit en verantwoordelijk leiderschap.'
+  },
+  {
+    semester: 6,
+    outcome: 'reflecteren',
+    description: 'Studenten werken zelfsturend en proactief aan hun ontwikkeling als ontwerper. Ze tonen kritische zelfreflectie op hun professionele identiteit, waarden en ambities binnen het vakgebied. Ze verbinden persoonlijke motivatie met maatschappelijke verantwoordelijkheid en tonen ethische en geëngageerde betrokkenheid bij hun werk.'
+  },
+
+  // Jaar 4, Semester 7 (Afstuderen)
+  {
+    semester: 7,
+    outcome: 'context',
+    description: 'De afstudeerder benadert complexe vraagstukken met een professionele, onderzoekende en kritische houding. Hij/zij toont eigenaarschap in het afbakenen en doorgronden van de context, vraagt door op aannames en onderzoekt belangen van alle relevante stakeholders. De student gaat zorgvuldig en ethisch om met data en toont bewustzijn van maatschappelijke en organisatorische consequenties van keuzes. Daarbij wordt verantwoordelijkheid genomen voor de kwaliteit, diepgang en betrouwbaarheid van het onderzoek.'
+  },
+  {
+    semester: 7,
+    outcome: 'ontwerpen',
+    description: 'De afstudeerder ontwerpt met autonomie, visie en een volwassen vakinhoudelijke houding. Hij/zij durft duidelijke ontwerpkeuzes te maken en verantwoordt deze met overtuiging richting professionals en opdrachtgevers. De student balanceert creativiteit met realisme en toont flexibiliteit wanneer nieuwe inzichten of veranderende omstandigheden dat vragen. Ontwerpen wordt gezien als een verantwoordelijk proces, waarin de student openstaat voor kritiek en steeds naar de beste oplossing blijft streven.'
+  },
+  {
+    semester: 7,
+    outcome: 'prototype',
+    description: 'De afstudeerder toont een transparante, nauwkeurige en iteratieve houding in het prototypen en testen. Hij/zij gaat professioneel om met feedback en onderzoekt kritisch de werking van het ontwerp, ook wanneer resultaten confronterend zijn. De student toont discipline in het zorgvuldig documenteren en analyseren van tests en blijft gericht op verbeteren, valideren en afwegen. Integriteit, eerlijkheid en doorzettingsvermogen kenmerken de houding in dit deel van het proces.'
+  },
+  {
+    semester: 7,
+    outcome: 'verbinden',
+    description: 'De afstudeerder communiceert volwassen, respectvol en professioneel binnen de organisatie en met externe stakeholders. Hij/zij stemt actief af, bewaakt verwachtingen en neemt initiatief in samenwerking. De student toont empathie voor verschillende disciplines en belangen en beweegt zich soepel tussen rollen en gesprekspartners. Feedback wordt zowel constructief gegeven als ontvangen, en de student draagt zichtbaar bij aan een professionele, collegiale samenwerking.'
+  },
+  {
+    semester: 7,
+    outcome: 'reflecteren',
+    description: 'De afstudeerder neemt volledige verantwoordelijkheid voor zijn/haar eigen ontwikkeling en handelen. Hij/zij reflecteert kritisch en eerlijk op keuzes, resultaten en professionele identiteit, en koppelt inzichten aan concrete verbeteringen. De student toont zelfbewustzijn, realisme en intrinsieke motivatie om verder te groeien binnen het vakgebied. Tegelijk wordt een ethische en maatschappelijk bewuste houding zichtbaar, waarbij de student nadenkt over de bredere impact van het ontwerp en het eigen professionele handelen.'
   }
 ];
 

@@ -5,6 +5,5 @@ export const semesterLevels: Record<number, string> = {
   4: 'Gevorderd - Zelfstandig met feedback',
   5: 'Professioneel - Autonoom',
   6: 'Professioneel - Autonoom',
-  7: 'Expert - Leidend',
-  8: 'Expert - Leidend'
+  7: 'Expert - Leidend'
 };

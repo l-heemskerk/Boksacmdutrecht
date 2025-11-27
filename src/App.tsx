@@ -4,9 +4,9 @@ import { SemesterView } from './components/SemesterView';
 import { LearningOutcomeView } from './components/LearningOutcomeView';
 import { CompetencyView } from './components/CompetencyView';
 import { HelpDialog } from './components/HelpDialog';
+import { ExportButton } from './components/ExportButton';
 import { semesters, mockActivities } from './data/mockData';
 import { BookOpen, Layers, TrendingUp } from 'lucide-react';
-import cmdLogo from 'figma:asset/68e356bfb1ce5a4466aa3dede71306cadf1e68d2.png';
 import { CompetencyType } from './types/curriculum';
 
 export default function App() {
@@ -20,16 +20,17 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <img 
-                src={cmdLogo} 
-                alt="CMD Utrecht Logo" 
-                className="h-16 w-auto"
-              />
               <div>
                 <h1 className="text-gray-900">BoKSA CMD Utrecht</h1>
               </div>
             </div>
-            <HelpDialog />
+            <div className="flex items-center gap-3">
+              <div className="text-gray-500 text-sm">
+                Laatst geüpdatet: 10 november 2025
+              </div>
+              <ExportButton />
+              <HelpDialog />
+            </div>
           </div>
         </div>
       </header>
@@ -49,7 +50,7 @@ export default function App() {
               className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3"
             >
               <TrendingUp className="w-4 h-4" />
-              Competenties
+              Leerlijnen
             </TabsTrigger>
             <TabsTrigger 
               value="outcome" 

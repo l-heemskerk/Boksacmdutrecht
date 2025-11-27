@@ -30,7 +30,8 @@ export function LearningOutcomeDetailsSection({ outcome }: LearningOutcomeDetail
             {details.knowledge.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="text-blue-600 mt-1">•</span>
-                <span className="text-gray-700">{item}</span>
+                <span className="text-gray-700 flex-1">{item.text}</span>
+                <span className="text-xs text-gray-500 italic">{item.leerlijnen.join(', ')}</span>
               </li>
             ))}
           </ul>
@@ -46,7 +47,8 @@ export function LearningOutcomeDetailsSection({ outcome }: LearningOutcomeDetail
             {details.skills.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="text-orange-600 mt-1">•</span>
-                <span className="text-gray-700">{item}</span>
+                <span className="text-gray-700 flex-1">{item.text}</span>
+                <span className="text-xs text-gray-500 italic">{item.leerlijnen.join(', ')}</span>
               </li>
             ))}
           </ul>

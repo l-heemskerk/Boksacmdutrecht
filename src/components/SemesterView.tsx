@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Semester, learningOutcomeLabels, learningOutcomeColors, CompetencyType, Activity } from '../types/curriculum';
+import { Semester, learningOutcomeLabels, learningOutcomeColors, CompetencyType, Activity, semesterColors } from '../types/curriculum';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Brain, Zap, Heart, Package, ChevronDown, X } from 'lucide-react';
+import { Brain, Zap, Heart, Package, ChevronDown, X, Link2 } from 'lucide-react';
+import { getLearningOutcomeIcon } from '../utils/learningOutcomeIcons';
+import { renderWithCMDMethodsLinks } from '../utils/cmdMethodsLinks';
 
 interface SemesterViewProps {
   semesters: Semester[];
@@ -112,6 +114,25 @@ export function SemesterView({
               {activity.description && (
                 <p className="text-gray-600 mt-2">{activity.description}</p>
               )}
+              {/* Relations to other activities */}
+              {activity.relations && (
+                <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-start gap-2">
+                    <Link2 className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+                    <div>
+                      <span className="text-blue-900 text-sm">{activity.relations}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {/* Workshopweek special message */}
+              {activity.excludeCompetenciesSection && (
+                <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <p className="text-amber-900 text-sm">
+                    <span className="font-semibold">Let op:</span> Er kunnen geen specifieke Kennis, Houding en Vaardigheden aan deze activiteit gekoppeld worden omdat dit afhangt van de gekozen workshops.
+                  </p>
+                </div>
+              )}
             </div>
             <Badge variant="outline" className="shrink-0 bg-white">
               {activity.duration}
@@ -119,9 +140,9 @@ export function SemesterView({
           </div>
         </CardHeader>
         <CardContent className="pt-6">
-          <Accordion type="multiple" className="w-full" defaultValue={["competencies"]}>
+          <Accordion type="multiple" className="w-full">
             {/* Competenties per leeruitkomst */}
-            {activity.learningOutcomeDetails && activity.learningOutcomeDetails.length > 0 && (
+            {!activity.excludeCompetenciesSection && activity.learningOutcomeDetails && activity.learningOutcomeDetails.length > 0 && (
               <AccordionItem value="competencies" className="border-none">
                 <AccordionTrigger className="hover:no-underline">
                   <div className="flex items-center gap-2">
@@ -139,7 +160,10 @@ export function SemesterView({
                       <div key={idx} className="border-2 border-gray-200 rounded-lg overflow-hidden">
                         {/* Leeruitkomst header */}
                         <div className={`px-4 py-3 ${learningOutcomeColors[detail.outcome]} border-b-2 border-gray-200`}>
-                          <h4 className="text-gray-900">{learningOutcomeLabels[detail.outcome]}</h4>
+                          <div className="flex items-center gap-2">
+                            {getLearningOutcomeIcon(detail.outcome, 'w-5 h-5 text-gray-900')}
+                            <h4 className="text-gray-900">{learningOutcomeLabels[detail.outcome]}</h4>
+                          </div>
                         </div>
                         
                         {/* Competenties grid */}
@@ -155,7 +179,7 @@ export function SemesterView({
                                 {detail.kennis.map((item, i) => (
                                   <li key={i} className="text-gray-700 text-sm flex items-start gap-2">
                                     <span className="text-blue-600 mt-0.5">•</span>
-                                    <span>{item}</span>
+                                    <span>{renderWithCMDMethodsLinks(item)}</span>
                                   </li>
                                 ))}
                               </ul>
@@ -173,7 +197,7 @@ export function SemesterView({
                                 {detail.vaardigheden.map((item, i) => (
                                   <li key={i} className="text-gray-700 text-sm flex items-start gap-2">
                                     <span className="text-orange-600 mt-0.5">•</span>
-                                    <span>{item}</span>
+                                    <span>{renderWithCMDMethodsLinks(item)}</span>
                                   </li>
                                 ))}
                               </ul>
@@ -206,7 +230,7 @@ export function SemesterView({
             )}
 
             {/* Beroepsproducten */}
-            {semester.professionalProducts && semester.professionalProducts.length > 0 && (
+            {activity.duration !== '1 week' && semester.professionalProducts && semester.professionalProducts.length > 0 && (
               <AccordionItem value="products" className="border-none">
                 <AccordionTrigger className="hover:no-underline">
                   <div className="flex items-center gap-2">
@@ -226,11 +250,12 @@ export function SemesterView({
                       <div key={idx} className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
                         <Badge 
                           variant="outline" 
-                          className={`${learningOutcomeColors[product.outcome]} shrink-0`}
+                          className={`${learningOutcomeColors[product.outcome]} shrink-0 flex items-center gap-1.5`}
                         >
+                          {getLearningOutcomeIcon(product.outcome, 'w-3.5 h-3.5')}
                           {learningOutcomeLabels[product.outcome]}
                         </Badge>
-                        <p className="text-gray-700 flex-1">{product.description}</p>
+                        <p className="text-gray-700 flex-1">{renderWithCMDMethodsLinks(product.description)}</p>
                       </div>
                     ))}
                   </div>
@@ -307,33 +332,45 @@ export function SemesterView({
         }
         
         const isOpen = openSemesters.includes(semester.number);
+        const semColor = semesterColors[semester.number] || semesterColors[1];
 
         return (
-          <Card key={semester.number} className="overflow-hidden border-2">
+          <Card key={semester.number} className={`overflow-hidden border-2 ${semColor.border} shadow-sm hover:shadow-md transition-all`}>
             {/* Semester Header - Clickable */}
             <div 
               onClick={() => toggleSemester(semester.number)}
-              className="cursor-pointer hover:bg-gray-50 transition-colors"
+              className="cursor-pointer hover:opacity-95 transition-opacity"
             >
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-white border-b-2 border-blue-100">
+              <CardHeader className={`${semColor.bg} border-b-2 ${semColor.border}`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4 flex-1">
                     <ChevronDown 
-                      className={`w-6 h-6 text-blue-600 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      className={`w-6 h-6 ${semColor.text} transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
+                    <Badge variant="secondary" className={`${semColor.text} bg-white border-2 ${semColor.border} shrink-0`}>
+                      Jaar {semester.year}
+                    </Badge>
                     <div>
-                      <CardTitle className="text-blue-900">
-                        Semester {semester.number}: {semester.name}
+                      <CardTitle className={semColor.text}>
+                        {semester.number >= 5 ? semester.name : `Semester ${semester.number}: ${semester.name}`}
                       </CardTitle>
-                      <p className="text-blue-700 mt-1">{semester.level}</p>
+                      {semester.description && (
+                        <p className="text-gray-700 mt-1">{semester.description}</p>
+                      )}
+                      {!semester.description && (
+                        <p className="text-gray-700 mt-1">{semester.level}</p>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Badge variant="secondary" className="bg-blue-600 text-white">
-                      Jaar {semester.year}
-                    </Badge>
                     <Badge variant="outline" className="bg-white">
-                      {filteredActivities.length} {filteredActivities.length === 1 ? 'activiteit' : 'activiteiten'}
+                      {semester.number === 5 
+                        ? 'Praktijk' 
+                        : semester.number === 6 
+                          ? '3 specialisaties' 
+                          : semester.number === 7
+                            ? 'Afstuderen'
+                            : `${filteredActivities.length} ${filteredActivities.length === 1 ? 'activiteit' : 'activiteiten'}`}
                     </Badge>
                   </div>
                 </div>

@@ -126,40 +126,154 @@ export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
                 </div>
               </div>
 
-              {/* Leeruitkomst progressie - Single column */}
-              <div className="space-y-4">
-                {filteredProgressions.map((progression, index) => {
-                  const previousProgression = index > 0 ? filteredProgressions[index - 1] : undefined;
-                  const newWords = previousProgression 
-                    ? getNewWords(progression.description, previousProgression.description)
-                    : [];
+              {/* Leeruitkomst progressie - Grouped by year */}
+              <div className="space-y-6">
+                {/* Jaar 1 - Semester 1 & 2 */}
+                <div className="border-4 border-blue-300 rounded-lg p-4 bg-blue-50">
+                  <h4 className="text-blue-900 mb-4">Jaar 1</h4>
+                  <div className="space-y-4">
+                    {filteredProgressions.filter(p => p.semester === 1 || p.semester === 2).map((progression, index, arr) => {
+                      const previousProgression = index > 0 ? arr[index - 1] : undefined;
+                      const newWords = previousProgression 
+                        ? getNewWords(progression.description, previousProgression.description)
+                        : [];
 
-                  const borderColorMap: Record<LearningOutcome, string> = {
-                    context: '#DBEAFE',
-                    ontwerpen: '#E9D5FF',
-                    prototype: '#D1FAE5',
-                    verbinden: '#FED7AA',
-                    reflecteren: '#FCE7F3'
-                  };
+                      const borderColorMap: Record<LearningOutcome, string> = {
+                        context: '#DBEAFE',
+                        ontwerpen: '#E9D5FF',
+                        prototype: '#D1FAE5',
+                        verbinden: '#FED7AA',
+                        reflecteren: '#FCE7F3'
+                      };
 
-                  return (
-                    <Card key={`${progression.semester}-${progression.outcome}`} className="border-l-4" style={{ borderLeftColor: borderColorMap[progression.outcome] }}>
-                      <CardHeader>
-                        <div className="flex items-center justify-between">
-                          <CardTitle>Semester {progression.semester}</CardTitle>
-                          <Badge variant="outline" className={learningOutcomeColors[progression.outcome]}>
-                            {progression.semesterName}
-                          </Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 leading-relaxed">
-                          {highlightText(progression.description, newWords)}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
+                      return (
+                        <Card key={`${progression.semester}-${progression.outcome}`} className="border-l-4 bg-white" style={{ borderLeftColor: borderColorMap[progression.outcome] }}>
+                          <CardHeader>
+                            <div className="flex items-center justify-between">
+                              <CardTitle>Semester {progression.semester} - {progression.semesterName}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-gray-700 leading-relaxed">
+                              {highlightText(progression.description, newWords)}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Jaar 2 - Semester 3 & 4 */}
+                <div className="border-4 border-indigo-300 rounded-lg p-4 bg-indigo-50">
+                  <h4 className="text-indigo-900 mb-4">Jaar 2</h4>
+                  <div className="space-y-4">
+                    {filteredProgressions.filter(p => p.semester === 3 || p.semester === 4).map((progression, index, arr) => {
+                      const allPreviousProgressions = filteredProgressions.filter(p => p.semester < progression.semester);
+                      const previousProgression = allPreviousProgressions[allPreviousProgressions.length - 1];
+                      const newWords = previousProgression 
+                        ? getNewWords(progression.description, previousProgression.description)
+                        : [];
+
+                      const borderColorMap: Record<LearningOutcome, string> = {
+                        context: '#DBEAFE',
+                        ontwerpen: '#E9D5FF',
+                        prototype: '#D1FAE5',
+                        verbinden: '#FED7AA',
+                        reflecteren: '#FCE7F3'
+                      };
+
+                      return (
+                        <Card key={`${progression.semester}-${progression.outcome}`} className="border-l-4 bg-white" style={{ borderLeftColor: borderColorMap[progression.outcome] }}>
+                          <CardHeader>
+                            <div className="flex items-center justify-between">
+                              <CardTitle>Semester {progression.semester} - {progression.semesterName}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-gray-700 leading-relaxed">
+                              {highlightText(progression.description, newWords)}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Jaar 3 - Semester 5 (Praktijk) & 6 (Specialisatie) */}
+                <div className="border-4 border-purple-300 rounded-lg p-4 bg-purple-50">
+                  <h4 className="text-purple-900 mb-4">Jaar 3</h4>
+                  <div className="space-y-4">
+                    {filteredProgressions.filter(p => p.semester === 5 || p.semester === 6).map((progression, index, arr) => {
+                      const allPreviousProgressions = filteredProgressions.filter(p => p.semester < progression.semester);
+                      const previousProgression = allPreviousProgressions[allPreviousProgressions.length - 1];
+                      const newWords = previousProgression 
+                        ? getNewWords(progression.description, previousProgression.description)
+                        : [];
+
+                      const borderColorMap: Record<LearningOutcome, string> = {
+                        context: '#DBEAFE',
+                        ontwerpen: '#E9D5FF',
+                        prototype: '#D1FAE5',
+                        verbinden: '#FED7AA',
+                        reflecteren: '#FCE7F3'
+                      };
+
+                      return (
+                        <Card key={`${progression.semester}-${progression.outcome}`} className="border-l-4 bg-white" style={{ borderLeftColor: borderColorMap[progression.outcome] }}>
+                          <CardHeader>
+                            <div className="flex items-center justify-between">
+                              <CardTitle>Semester {progression.semester} - {progression.semesterName}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-gray-700 leading-relaxed">
+                              {highlightText(progression.description, newWords)}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Jaar 4 - Semester 7 (Afstuderen) */}
+                <div className="border-4 border-pink-300 rounded-lg p-4 bg-pink-50">
+                  <h4 className="text-pink-900 mb-4">Jaar 4</h4>
+                  <div className="space-y-4">
+                    {filteredProgressions.filter(p => p.semester === 7).map((progression) => {
+                      const allPreviousProgressions = filteredProgressions.filter(p => p.semester < progression.semester);
+                      const previousProgression = allPreviousProgressions[allPreviousProgressions.length - 1];
+                      const newWords = previousProgression 
+                        ? getNewWords(progression.description, previousProgression.description)
+                        : [];
+
+                      const borderColorMap: Record<LearningOutcome, string> = {
+                        context: '#DBEAFE',
+                        ontwerpen: '#E9D5FF',
+                        prototype: '#D1FAE5',
+                        verbinden: '#FED7AA',
+                        reflecteren: '#FCE7F3'
+                      };
+
+                      return (
+                        <Card key={`${progression.semester}-${progression.outcome}`} className="border-l-4 bg-white" style={{ borderLeftColor: borderColorMap[progression.outcome] }}>
+                          <CardHeader>
+                            <div className="flex items-center justify-between">
+                              <CardTitle>Semester {progression.semester} - {progression.semesterName}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-gray-700 leading-relaxed">
+                              {highlightText(progression.description, newWords)}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </TabsContent>
           );

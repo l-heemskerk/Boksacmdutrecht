@@ -19,10 +19,12 @@ export interface Activity {
   name: string;
   duration: string;
   description?: string;
+  relations?: string;
   semester: number;
   learningOutcomes: LearningOutcome[];
   competencies: Competency[];
   learningOutcomeDetails?: LearningOutcomeDetail[];
+  excludeCompetenciesSection?: boolean;
 }
 
 export interface Specialization {
@@ -35,6 +37,7 @@ export interface Specialization {
 export interface Semester {
   number: number;
   name: string;
+  description?: string;
   year: number;
   level: string;
   activities: Activity[];
@@ -59,9 +62,9 @@ export interface LearningOutcomeProgression {
 export const learningOutcomeLabels: Record<LearningOutcome, string> = {
   context: 'Context',
   ontwerpen: 'Ontwerpen',
-  prototype: 'Prototype',
+  prototype: 'Prototype & testen',
   verbinden: 'Verbinden',
-  reflecteren: 'Reflecteren'
+  reflecteren: 'Leren & reflecteren'
 };
 
 export const learningOutcomeColors: Record<LearningOutcome, string> = {
@@ -70,4 +73,14 @@ export const learningOutcomeColors: Record<LearningOutcome, string> = {
   prototype: 'bg-green-100 text-green-800 border-green-200',
   verbinden: 'bg-orange-100 text-orange-800 border-orange-200',
   reflecteren: 'bg-pink-100 text-pink-800 border-pink-200'
+};
+
+export const semesterColors: Record<number, { bg: string; text: string; border: string }> = {
+  1: { bg: 'bg-sky-50', text: 'text-sky-900', border: 'border-sky-300' },
+  2: { bg: 'bg-blue-50', text: 'text-blue-900', border: 'border-blue-300' },
+  3: { bg: 'bg-indigo-50', text: 'text-indigo-900', border: 'border-indigo-300' },
+  4: { bg: 'bg-violet-50', text: 'text-violet-900', border: 'border-violet-300' },
+  5: { bg: 'bg-purple-50', text: 'text-purple-900', border: 'border-purple-300' },
+  6: { bg: 'bg-fuchsia-50', text: 'text-fuchsia-900', border: 'border-fuchsia-300' },
+  7: { bg: 'bg-pink-50', text: 'text-pink-900', border: 'border-pink-300' }
 };
