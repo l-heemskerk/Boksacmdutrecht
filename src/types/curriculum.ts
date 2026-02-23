@@ -25,6 +25,7 @@ export interface Activity {
   competencies: Competency[];
   learningOutcomeDetails?: LearningOutcomeDetail[];
   excludeCompetenciesSection?: boolean;
+  professionalProducts?: string; // Beroepsproducten specific to this activity
 }
 
 export interface Specialization {
@@ -43,6 +44,26 @@ export interface Semester {
   activities: Activity[];
   specializations?: Specialization[];
   professionalProducts?: ProfessionalProduct[];
+  semesterLevel?: string; // Zelcom niveau zoals "Oriëntatie", "Oefening", etc.
+  zelcomData?: ZelcomData; // Oude ZEL-COM tabel informatie (deprecated)
+  zelcomNarrative?: ZelcomNarrativeData; // Nieuwe narratieve ZEL-COM beschrijving
+}
+
+export interface ZelcomData {
+  zelfstandigheid: string;
+  expertise: string;
+  leercontext: string;
+  complexiteit: string;
+  organisatorischeRol: string;
+  multidisciplinariteit: string;
+}
+
+export interface ZelcomNarrativeData {
+  jaar: number;
+  titel: string;
+  beschrijving: string;
+  isPraktijk?: boolean;
+  isAfstuderen?: boolean;
 }
 
 export interface ProfessionalProduct {
@@ -57,6 +78,7 @@ export interface LearningOutcomeProgression {
   description: string;
   knowledge?: string[];
   skills?: string[];
+  zelcomLevel?: string; // Niveau zoals "Beginnend - onder begeleiding"
 }
 
 export const learningOutcomeLabels: Record<LearningOutcome, string> = {

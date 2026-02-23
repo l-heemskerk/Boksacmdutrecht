@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Button } from './ui/button';
-import { HelpCircle, BookOpen, Layers, TrendingUp, Brain, Zap, Heart } from 'lucide-react';
+import { HelpCircle, BookOpen, Layers, TrendingUp, Brain, Zap, Heart, Map } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
@@ -8,9 +8,8 @@ export function HelpDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50">
-          <HelpCircle className="w-4 h-4" />
-          Help & Uitleg
+        <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-600">
+          <HelpCircle className="w-5 h-5" />
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
@@ -22,10 +21,9 @@ export function HelpDialog() {
         </DialogHeader>
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="overview">Overzicht</TabsTrigger>
             <TabsTrigger value="tabs">Tabs</TabsTrigger>
-            <TabsTrigger value="export">Export</TabsTrigger>
             <TabsTrigger value="begrippen">Begrippen</TabsTrigger>
           </TabsList>
 
@@ -66,68 +64,6 @@ export function HelpDialog() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="export" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  📊 Data Export & GitHub
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <h4 className="text-gray-900">Download Opties</h4>
-                  <p className="text-gray-700 text-sm">
-                    Gebruik de "Download" knop om het curriculum te exporteren in verschillende formaten:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
-                    <li><strong>Excel (.xlsx)</strong> - Met 4 tabbladen: Jaar 1 & 2, Specialisaties, Praktijk & Afstuderen, en Opbouw Leeruitkomsten</li>
-                    <li><strong>CSV (.csv)</strong> - Eenvoudig formaat voor data-analyse en versiebeheer</li>
-                    <li><strong>JSON (.json)</strong> - Gestructureerde data voor programmatisch gebruik</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-2 pt-3 border-t">
-                  <h4 className="text-gray-900">CSV voor GitHub</h4>
-                  <p className="text-gray-700 text-sm">
-                    Een statische CSV is beschikbaar voor version control. Deze bevat activiteitnamen bij elke competentie voor betere traceerbaarheid.
-                  </p>
-                  <div className="bg-blue-50 p-3 rounded-md border border-blue-200 mt-2">
-                    <p className="text-sm text-blue-900">
-                      <strong>💡 Tip:</strong> Gebruik de groene "📊 CSV" knop in de header om de statische CSV te downloaden. 
-                      Deze kan je committen naar je GitHub repository om curriculum wijzigingen bij te houden.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2 pt-3 border-t">
-                  <h4 className="text-gray-900">CSV Structuur</h4>
-                  <p className="text-gray-700 text-sm">
-                    De CSV bevat deze kolommen:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
-                    <li>Semester, Semester Naam, Specialisatie, Jaar, Niveau</li>
-                    <li>Leeruitkomst (context, ontwerpen, prototype, verbinden, reflecteren)</li>
-                    <li>Kennis items met activiteitnaam tussen haakjes</li>
-                    <li>Vaardigheden items met activiteitnaam tussen haakjes</li>
-                    <li>Houding items (generiek per semester)</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-2 pt-3 border-t">
-                  <h4 className="text-gray-900">Export Opties</h4>
-                  <p className="text-gray-700 text-sm">
-                    Gebruik de <strong>Exporteer</strong> knop in de header om alle curriculumdata te downloaden:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
-                    <li><strong>Excel:</strong> Volledig overzicht met alle tabbladen</li>
-                    <li><strong>CSV:</strong> Platte data voor versiebeheer en analyse</li>
-                    <li><strong>JSON:</strong> Gestructureerde data voor ontwikkelaars</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
           <TabsContent value="tabs" className="space-y-4">
             <Card>
               <CardHeader>
@@ -143,7 +79,6 @@ export function HelpDialog() {
                 <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
                   <li>Klik op een semester om de activiteiten te bekijken</li>
                   <li>Bekijk per activiteit de competenties per leeruitkomst</li>
-                  <li>Zie de beroepsproducten die studenten opleveren</li>
                   <li>Filter op leeruitkomsten via het linkermenu</li>
                 </ul>
               </CardContent>
@@ -152,20 +87,41 @@ export function HelpDialog() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-blue-600" />
-                  Leerlijnen
+                  <Map className="w-5 h-5 text-blue-600" />
+                  Leerlijnen & Speelvelden
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2">
+              <CardContent className="space-y-4">
                 <p className="text-gray-700">
-                  Bekijk de opbouw van kennis, vaardigheden en houding door de jaren heen.
+                  De leerlijnen beschrijven hoe studenten zich ontwikkelen vanuit zes speelvelden: Design, Digitale technologie & AI, Mens & ervaring, Organisatie & strategie, Maatschappij & toekomst en Onderzoekend vermogen. In samenhang met ZELCOM kennen de leerlijnen een opbouw met toenemende complexiteit en zelfstandigheid per semester.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm ml-2">
-                  <li>Selecteer Kennis, Vaardigheden of Houding bovenaan</li>
-                  <li>Filter op specifieke semesters met de dropdown</li>
-                  <li>Zie de progressie in complexiteit en zelfstandigheid</li>
-                  <li>Houding wordt weergegeven per leeruitkomst</li>
-                </ul>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                  <div className="p-3 bg-purple-50 border border-purple-100 rounded-lg">
+                    <h5 className="font-semibold text-purple-900 mb-1">Design</h5>
+                    <p className="text-sm text-purple-800">Visueel, interactie en conceptueel ontwerp.</p>
+                  </div>
+                  <div className="p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                    <h5 className="font-semibold text-blue-900 mb-1">Digitale technologie & AI</h5>
+                    <p className="text-sm text-blue-800">Front-end, back-end en AI-toepassingen.</p>
+                  </div>
+                  <div className="p-3 bg-pink-50 border border-pink-100 rounded-lg">
+                    <h5 className="font-semibold text-pink-900 mb-1">Mens & ervaring</h5>
+                    <p className="text-sm text-pink-800">User experience, psychologie en ethiek.</p>
+                  </div>
+                  <div className="p-3 bg-orange-50 border border-orange-100 rounded-lg">
+                    <h5 className="font-semibold text-orange-900 mb-1">Organisatie & strategie</h5>
+                    <p className="text-sm text-orange-800">Business modellen en projectmanagement.</p>
+                  </div>
+                  <div className="p-3 bg-green-50 border border-green-100 rounded-lg">
+                    <h5 className="font-semibold text-green-900 mb-1">Maatschappij & toekomst</h5>
+                    <p className="text-sm text-green-800">Maatschappelijke impact en trends.</p>
+                  </div>
+                  <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-lg">
+                    <h5 className="font-semibold text-indigo-900 mb-1">Onderzoekend vermogen</h5>
+                    <p className="text-sm text-indigo-800">Methodisch werken en valideren.</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
@@ -246,12 +202,7 @@ export function HelpDialog() {
                   </div>
                 </div>
 
-                <div className="space-y-2 pt-3 border-t">
-                  <h4 className="text-gray-900">Beroepsproducten</h4>
-                  <p className="text-gray-700 text-sm">
-                    Concrete producten en resultaten die studenten opleveren per leeruitkomst, zoals onderzoeksrapporten, ontwerpen, prototypes en presentaties.
-                  </p>
-                </div>
+
               </CardContent>
             </Card>
           </TabsContent>

@@ -3,7 +3,7 @@ import { LearningOutcome } from '../types/curriculum';
 interface HoudingData {
   semester: number;
   outcome: LearningOutcome;
-  description: string;
+  description: string | string[];
 }
 
 // Houding formulering per semester en leeruitkomst
@@ -17,7 +17,7 @@ const houdingData: HoudingData[] = [
   {
     semester: 1,
     outcome: 'ontwerpen',
-    description: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    description: 'Studenten durven risicos te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
   },
   {
     semester: 1,
@@ -98,7 +98,7 @@ const houdingData: HoudingData[] = [
   {
     semester: 4,
     outcome: 'ontwerpen',
-    description: 'Studenten tonen intellectuele eerlijkheid door keuzes transparant te onderbouwen en nederigheid om van anderen te leren. Ze balanceren assertiviteit in hun visie met luisterbereidheid naar stakeholders. Verantwoordelijkheidsbesef voor de impact van hun ontwerpen groeit, evenals moed om moeilijke ontwerpdilemma\'s aan te pakken.'
+    description: 'Studenten tonen intellectuele eerlijkheid door keuzes transparant te onderbouwen en nederigheid om van anderen te leren. Ze balanceren assertiviteit in hun visie met luisterbereidheid naar stakeholders. Verantwoordelijkheidsbesef voor de impact van hun ontwerpen groeit, evenals moed om moeilijke ontwerpdilemmas aan te pakken.'
   },
   {
     semester: 4,
@@ -113,7 +113,7 @@ const houdingData: HoudingData[] = [
   {
     semester: 4,
     outcome: 'reflecteren',
-    description: 'Studenten ontwikkelen zelfreflectie over hun professionele identiteit en toekomstige ontwikkeling. Ze tonen leiderschapsmentaliteit in hun eigen leerproces en inspireren anderen door hun leerhouding. Ze verbinden persoonlijke passies met professionele doelen en tonen intrinsieke motivatie en ontwikkeling als CMD\'er.'
+    description: 'Studenten ontwikkelen zelfreflectie over hun professionele identiteit en toekomstige ontwikkeling. Ze tonen leiderschapsmentaliteit in hun eigen leerproces en inspireren anderen door hun leerhouding. Ze verbinden persoonlijke passies met professionele doelen en tonen intrinsieke motivatie en ontwikkeling als CMDer.'
   },
 
   // Jaar 3, Semester 5 (Praktijk)
@@ -125,7 +125,7 @@ const houdingData: HoudingData[] = [
   {
     semester: 5,
     outcome: 'ontwerpen',
-    description: 'De student ontwerpt met eigenaarschap en autonomie. Hij/zij maakt bewuste keuzes op basis van onderzoek en feedback, toont creativiteit binnen realistische kaders en blijft flexibel bij veranderende prioriteiten. De student durft een duidelijke richting voor te stellen, maar staat open voor expertise van collega\'s en de visie van de organisatie.'
+    description: 'De student ontwerpt met eigenaarschap en autonomie. Hij/zij maakt bewuste keuzes op basis van onderzoek en feedback, toont creativiteit binnen realistische kaders en blijft flexibel bij veranderende prioriteiten. De student durft een duidelijke richting voor te stellen, maar staat open voor expertise van collegas en de visie van de organisatie.'
   },
   {
     semester: 5,
@@ -135,7 +135,7 @@ const houdingData: HoudingData[] = [
   {
     semester: 5,
     outcome: 'verbinden',
-    description: 'De student communiceert professioneel met collega\'s, opdrachtgevers en andere betrokkenen. Hij/zij stemt actief af, zoekt samenwerking op en bewaakt een constructieve, respectvolle werkrelatie. De student draagt verantwoordelijkheid binnen het team, vraagt tijdig hulp en geeft en ontvangt feedback op een volwassen manier.'
+    description: 'De student communiceert professioneel met collegas, opdrachtgevers en andere betrokkenen. Hij/zij stemt actief af, zoekt samenwerking op en bewaakt een constructieve, respectvolle werkrelatie. De student draagt verantwoordelijkheid binnen het team, vraagt tijdig hulp en geeft en ontvangt feedback op een volwassen manier.'
   },
   {
     semester: 5,
