@@ -56,7 +56,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Wordt verder ontwikkeld in S2 met UX design en S3 met interaction design'
     ],
     verbandenMetAndereLeerlijnen: ['Technologie & AI', 'Mens & Ervaring', 'Onderzoekend Vermogen'],
-    zelcomDescription: sem1Zelcom
+    zelcomDescription: sem1Zelcom,
+    complexiteit: 'Laag',
+    zelfstandigheid: 'Laag'
   },
   {
     semester: 2,
@@ -78,7 +80,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1 designprincipes en bereidt voor op S3 complexere interactieve systemen'
     ],
     verbandenMetAndereLeerlijnen: ['Technologie & AI', 'Mens & Ervaring', 'Organisatie & Strategie'],
-    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht'
+    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht',
+    complexiteit: 'Midden',
+    zelfstandigheid: 'Midden'
   },
   {
     semester: 3,
@@ -100,7 +104,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1-S2, bereidt voor op specialisatiekeuze in S6'
     ],
     verbandenMetAndereLeerlijnen: ['Mens & Ervaring', 'Technologie & AI', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 4,
@@ -122,7 +128,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op S5 stage en S6 specialisatie'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Mens & Ervaring', 'Technologie & AI'],
-    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 5,
@@ -145,7 +153,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Verkent specialisatie interesses voor semester 6'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Mens & Ervaring', 'Technologie & AI'],
-    zelcomDescription: 'Niveau 5: Vaardig - adviserend'
+    zelcomDescription: 'Niveau 5: Vaardig - adviserend',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   // Semester 6 - Brand Design specialisatie
   {
@@ -169,7 +179,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
     ],
     verbandenMetAndereLeerlijnen: ['Maatschappij & Toekomst', 'Organisatie & Strategie'],
     specialization: 'brand-design',
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   // Semester 6 - Immersive Design specialisatie
   {
@@ -193,7 +205,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
     ],
     verbandenMetAndereLeerlijnen: ['Technologie & AI', 'Mens & Ervaring'],
     specialization: 'immersive-design',
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   // Semester 6 - Digital Design specialisatie
   {
@@ -217,7 +231,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
     ],
     verbandenMetAndereLeerlijnen: ['Technologie & AI', 'Organisatie & Strategie'],
     specialization: 'digital-design',
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 7,
@@ -239,7 +255,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Demonstreert mastery in design'
     ],
     verbandenMetAndereLeerlijnen: ['Onderzoekend Vermogen', 'Organisatie & Strategie', 'Maatschappij & Toekomst'],
-    zelcomDescription: sem7Zelcom
+    zelcomDescription: sem7Zelcom,
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
 
   // ==================== TECHNOLOGIE & AI ====================
@@ -263,7 +281,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Fundeert technische vaardigheden die in S2-S4 worden uitgebreid met frameworks, APIs en geavanceerde JavaScript'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: sem1Zelcom
+    zelcomDescription: sem1Zelcom,
+    complexiteit: 'Laag',
+    zelfstandigheid: 'Laag'
   },
   {
     semester: 2,
@@ -285,7 +305,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1 HTML/CSS/JS, leidt naar S3 geavanceerde frameworks en S4 full-stack development'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Mens & Ervaring'],
-    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht'
+    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht',
+    complexiteit: 'Midden',
+    zelfstandigheid: 'Midden'
   },
   {
     semester: 3,
@@ -307,7 +329,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1-S2 frontend, bereidt voor op S4-S5 professionele development'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 4,
@@ -330,7 +354,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op professionele praktijk'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 5,
@@ -353,7 +379,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Leert professionele development workflows'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Design'],
-    zelcomDescription: 'Niveau 5: Vaardig - adviserend'
+    zelcomDescription: 'Niveau 5: Vaardig - adviserend',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 6,
@@ -376,7 +404,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op technisch afstudeerproject'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 7,
@@ -399,7 +429,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Demonstreert technical mastery'
     ],
     verbandenMetAndereLeerlijnen: ['Onderzoekend Vermogen', 'Design', 'Maatschappij & Toekomst'],
-    zelcomDescription: sem7Zelcom
+    zelcomDescription: sem7Zelcom,
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
 
   // ==================== MENS & ERVARING ====================
@@ -422,7 +454,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Basis voor UX research in S2-S3, accessibility in S3, en gedragswetenschappen in S4-S5'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: sem1Zelcom
+    zelcomDescription: sem1Zelcom,
+    complexiteit: 'Laag',
+    zelfstandigheid: 'Laag'
   },
   {
     semester: 2,
@@ -443,7 +477,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1 UX basics, leidt naar S3 kwantitatief onderzoek en advanced testing methoden'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht'
+    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht',
+    complexiteit: 'Midden',
+    zelfstandigheid: 'Midden'
   },
   {
     semester: 3,
@@ -465,7 +501,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1-S2 UX, bereidt voor op specialisatie UX research/design'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Maatschappij & Toekomst', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 4,
@@ -486,7 +524,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op professionele UX praktijk'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Organisatie & Strategie', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 5,
@@ -507,7 +547,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Leert professionele UX workflows en tools'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 5: Vaardig - adviserend'
+    zelcomDescription: 'Niveau 5: Vaardig - adviserend',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 6,
@@ -528,7 +570,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op UX focus in afstuderen'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen', 'Organisatie & Strategie'],
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 7,
@@ -549,7 +593,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Demonstreert UX mastery'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen', 'Maatschappij & Toekomst'],
-    zelcomDescription: sem7Zelcom
+    zelcomDescription: sem7Zelcom,
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
 
   // ==================== MAATSCHAPPIJ & TOEKOMST ====================
@@ -573,7 +619,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Vormt bewustzijn dat verder wordt ontwikkeld in S3-S4 met ethics, sustainability en social design'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: sem1Zelcom
+    zelcomDescription: sem1Zelcom,
+    complexiteit: 'Laag',
+    zelfstandigheid: 'Laag'
   },
   {
     semester: 2,
@@ -595,7 +643,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Vormt bewustzijn dat verder wordt ontwikkeld in S3-S4 met ethics, sustainability en social design'
     ],
     verbandenMetAndereLeerlijnen: ['Mens & Ervaring', 'Design'],
-    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht'
+    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht',
+    complexiteit: 'Midden',
+    zelfstandigheid: 'Midden'
   },
   {
     semester: 3,
@@ -617,7 +667,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Verdiept S1-S2 maatschappelijk bewustzijn, bereidt voor op S6-S7 strategic design'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Technologie & AI', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 4,
@@ -638,7 +690,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op verantwoordelijk handelen in praktijk'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Mens & Ervaring'],
-    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 5,
@@ -659,7 +713,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Leert omgaan met ethische dilemma\'s in bedrijven'
     ],
     verbandenMetAndereLeerlijnen: ['Organisatie & Strategie', 'Design'],
-    zelcomDescription: 'Niveau 5: Vaardig - adviserend'
+    zelcomDescription: 'Niveau 5: Vaardig - adviserend',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 6,
@@ -680,7 +736,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op meaningful graduation project'
     ],
     verbandenMetAndereLeerlijnen: ['Onderzoekend Vermogen', 'Design'],
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 7,
@@ -701,7 +759,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Demonstreert verantwoord designleiderschap'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen', 'Organisatie & Strategie'],
-    zelcomDescription: sem7Zelcom
+    zelcomDescription: sem7Zelcom,
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
 
   // ==================== ORGANISATIE & STRATEGIE ====================
@@ -724,7 +784,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Grondslag voor complexere projecten in S2-S4 en stagevoorbereiding in S4'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: sem1Zelcom
+    zelcomDescription: sem1Zelcom,
+    complexiteit: 'Laag',
+    zelfstandigheid: 'Laag'
   },
   {
     semester: 2,
@@ -745,7 +807,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1 teamwork, bereidt voor op S4 stagevoorbereiding en S5 praktijk'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Technologie & AI'],
-    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht'
+    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht',
+    complexiteit: 'Midden',
+    zelfstandigheid: 'Midden'
   },
   {
     semester: 3,
@@ -767,7 +831,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1-S2 teamwork, bereidt voor op S5 professionele context'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Maatschappij & Toekomst'],
-    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 4,
@@ -788,7 +854,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op professionele stage'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Mens & Ervaring', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 5,
@@ -809,7 +877,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Leert organisatieculturen kennen'
     ],
     verbandenMetAndereLeerlijnen: ['Mens & Ervaring', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 5: Vaardig - adviserend'
+    zelcomDescription: 'Niveau 5: Vaardig - adviserend',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 6,
@@ -830,7 +900,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op strategische rol na afstuderen'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Onderzoekend Vermogen'],
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 7,
@@ -851,7 +923,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Demonstreert strategic leadership'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Maatschappij & Toekomst', 'Onderzoekend Vermogen'],
-    zelcomDescription: sem7Zelcom
+    zelcomDescription: sem7Zelcom,
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
 
   // ==================== ONDERZOEKEND VERMOGEN ====================
@@ -874,7 +948,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Basis voor kwantitatief onderzoek in S2, mixed methods in S3-S4, en afstudeeronderzoek in S7'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Mens & Ervaring'],
-    zelcomDescription: sem1Zelcom
+    zelcomDescription: sem1Zelcom,
+    complexiteit: 'Laag',
+    zelfstandigheid: 'Laag'
   },
   {
     semester: 2,
@@ -895,7 +971,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bouwt voort op S1 onderzoek basics, bereidt voor op S3 advanced research methods'
     ],
     verbandenMetAndereLeerlijnen: ['Mens & Ervaring', 'Design'],
-    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht'
+    zelcomDescription: 'Niveau 2: Gevorderd - onder toezicht',
+    complexiteit: 'Midden',
+    zelfstandigheid: 'Midden'
   },
   {
     semester: 3,
@@ -917,7 +995,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op S6 specialisatie research en S7 afstudeeronderzoek'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Technologie & AI', 'Mens & Ervaring'],
-    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 3: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 4,
@@ -938,7 +1018,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op onderzoek in praktijk'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Organisatie & Strategie', 'Mens & Ervaring'],
-    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig'
+    zelcomDescription: 'Niveau 4: Bekwaam - zelfstandig',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 5,
@@ -959,7 +1041,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Leert professionele research workflows'
     ],
     verbandenMetAndereLeerlijnen: ['Mens & Ervaring', 'Organisatie & Strategie'],
-    zelcomDescription: 'Niveau 5: Vaardig - adviserend'
+    zelcomDescription: 'Niveau 5: Vaardig - adviserend',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 6,
@@ -980,7 +1064,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Bereidt voor op graduation research'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Technologie & AI', 'Mens & Ervaring'],
-    zelcomDescription: 'Niveau 6: Expert - specialistisch'
+    zelcomDescription: 'Niveau 6: Expert - specialistisch',
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
   {
     semester: 7,
@@ -1001,7 +1087,9 @@ export const leerlijnProgressions: LeerlijnSemesterDetail[] = [
       'Demonstreert research mastery'
     ],
     verbandenMetAndereLeerlijnen: ['Design', 'Technologie & AI', 'Mens & Ervaring', 'Maatschappij & Toekomst'],
-    zelcomDescription: sem7Zelcom
+    zelcomDescription: sem7Zelcom,
+    complexiteit: 'Hoog',
+    zelfstandigheid: 'Hoog'
   },
 ];
 

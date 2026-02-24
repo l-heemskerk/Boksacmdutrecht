@@ -3,6 +3,7 @@ import { Leerlijn } from '../data/leerlijnen';
 import { leerlijnProgressions } from '../data/leerlijnProgressions';
 import { leerlijnInfo } from '../data/leerlijnInfo';
 import { Badge } from './ui/badge';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { 
   Lightbulb, 
   Compass, 
@@ -18,7 +19,8 @@ import {
   ArrowRight,
   Map,
   X,
-  ZoomIn
+  ZoomIn,
+  Filter
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import leerlijnenModelImage from 'figma:asset/a148addecc8838da41cda4e45e9837f597fc2b5a.png';
@@ -76,6 +78,7 @@ export function LeerlijnenView() {
   const [activeS6Specialization, setActiveS6Specialization] = useState<string>('brand-design');
   const [showIntro, setShowIntro] = useState<boolean>(true);
   const [isImageZoomed, setIsImageZoomed] = useState<boolean>(false);
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
 
   const color = leerlijnColors[activeLeerlijn];
   const Icon = leerlijnIcons[activeLeerlijn];
@@ -94,6 +97,12 @@ export function LeerlijnenView() {
     }
     // Voor andere semesters of als fallback (vindt de eerste match, bijv. generiek of fallback)
     return progressions.find(p => p.semester === sem);
+  };
+
+  // Handler voor speelveld selectie (sluit sheet op mobile)
+  const handleLeerlijnSelect = (leerlijn: Leerlijn) => {
+    setActiveLeerlijn(leerlijn);
+    setIsFilterOpen(false);
   };
 
   return (
@@ -187,9 +196,74 @@ export function LeerlijnenView() {
         )}
       </AnimatePresence>
 
-      {/* 1. Leerlijn Navigatie (Tabs) */}
-      <div className="sticky top-4 z-30 bg-white/95 backdrop-blur-md rounded-xl shadow-sm border border-gray-200 p-2 overflow-x-auto">
-        <div className="flex space-x-2 min-w-max md:justify-center">
+      {/* 1. Leerlijn Navigatie - Responsive */}
+      {/* Mobile: Filter Button + Sheet */}
+      <div className="md:hidden sticky top-4 z-30">
+        <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
+          <SheetTrigger asChild>
+            <button className="w-full bg-white/95 backdrop-blur-md rounded-xl shadow-sm border border-gray-200 p-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <div className={`p-2 rounded-lg bg-${color}-50`}>
+                  <Icon className={`w-5 h-5 text-${color}-600`} />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-gray-500 font-medium">Speelveld</div>
+                  <div className="font-bold text-gray-900">{activeLeerlijn}</div>
+                </div>
+              </div>
+              <Filter className="w-5 h-5 text-gray-400" />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+            <SheetHeader>
+              <SheetTitle className="flex items-center gap-2">
+                <Filter className="w-5 h-5" />
+                Selecteer Speelveld
+              </SheetTitle>
+            </SheetHeader>
+            <div className="mt-6 space-y-2">
+              {leerlijnenOrder.map((leerlijn) => {
+                const isActive = activeLeerlijn === leerlijn;
+                const lColor = leerlijnColors[leerlijn];
+                const LIcon = leerlijnIcons[leerlijn];
+                
+                return (
+                  <button
+                    key={leerlijn}
+                    onClick={() => handleLeerlijnSelect(leerlijn)}
+                    className={`
+                      w-full px-4 py-4 rounded-lg text-left transition-all duration-200 flex items-center gap-3 border
+                      ${isActive 
+                        ? `bg-${lColor}-50 border-${lColor}-200 shadow-sm` 
+                        : 'bg-white border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                      }
+                    `}
+                  >
+                    <div className={`p-2 rounded-lg ${isActive ? `bg-${lColor}-100` : 'bg-gray-100'}`}>
+                      <LIcon className={`w-5 h-5 ${isActive ? `text-${lColor}-600` : 'text-gray-500'}`} />
+                    </div>
+                    <div className="flex-1">
+                      <div className={`font-bold ${isActive ? `text-${lColor}-900` : 'text-gray-700'}`}>
+                        {leerlijn}
+                      </div>
+                      {isActive && (
+                        <div className={`text-xs text-${lColor}-600 mt-0.5`}>Actief speelveld</div>
+                      )}
+                    </div>
+                    {isActive && (
+                      <div className={`w-2 h-2 rounded-full bg-${lColor}-500`} />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      {/* Desktop: Horizontal Tabs (Compact) */}
+      <div className="hidden md:block sticky top-4 z-30 bg-white/95 backdrop-blur-md rounded-xl shadow-sm border border-gray-200 p-2 overflow-x-auto">
+        <div className="flex space-x-2 min-w-max lg:justify-center">
           {leerlijnenOrder.map((leerlijn) => {
             const isActive = activeLeerlijn === leerlijn;
             const lColor = leerlijnColors[leerlijn];
@@ -200,15 +274,16 @@ export function LeerlijnenView() {
                 key={leerlijn}
                 onClick={() => setActiveLeerlijn(leerlijn)}
                 className={`
-                  relative px-4 py-3 rounded-lg text-sm font-bold transition-all duration-200 flex items-center gap-2.5
+                  relative px-3 lg:px-4 py-2.5 lg:py-3 rounded-lg text-sm font-bold transition-all duration-200 flex items-center gap-2
                   ${isActive 
                     ? `bg-${lColor}-50 text-${lColor}-900 ring-1 ring-${lColor}-200 shadow-sm` 
                     : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                   }
                 `}
               >
-                <LIcon className={`w-5 h-5 ${isActive ? `text-${lColor}-600` : 'text-gray-400'}`} />
-                <span>{leerlijn}</span>
+                <LIcon className={`w-4 lg:w-5 h-4 lg:h-5 ${isActive ? `text-${lColor}-600` : 'text-gray-400'}`} />
+                <span className="hidden xl:inline">{leerlijn}</span>
+                <span className="xl:hidden">{leerlijn.split(' ')[0]}</span>
                 {isActive && (
                   <motion.div 
                     layoutId="activeLeerlijnTab"
@@ -249,7 +324,7 @@ export function LeerlijnenView() {
             <div className={`bg-white rounded-xl p-5 border border-${color}-100 shadow-sm`}>
               <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                 <Layers className="w-4 h-4" />
-                Essentie voor de BoKSA
+                Essentie speelveld
               </h3>
               <ul className="space-y-2.5">
                 {info.essentie.map((point, i) => (
@@ -285,51 +360,53 @@ export function LeerlijnenView() {
                   <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:border-gray-300 transition-colors">
                     
                     {/* Header van kaart */}
-                    <div className="p-5 border-b border-gray-100 bg-gray-50/50 flex flex-col md:flex-row md:items-center justify-start gap-4">
+                    <div className="p-5 border-b border-gray-100 bg-gray-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
                        
-                       {/* Bij S6 tonen we ALTIJD de specialisatie selector, ongeacht het speelveld */}
-                       {sem === 6 ? (
-                          <div className="flex flex-col sm:flex-row items-center gap-4">
-                              <span className="font-bold text-gray-900 text-lg whitespace-nowrap">Specialisatie semester:</span>
-                              <div className="flex bg-white p-1 rounded-lg border border-gray-200 shadow-sm">
-                                {[
-                                  { id: 'brand-design', label: 'Brand Design' },
-                                  { id: 'immersive-design', label: 'Immersive Design' },
-                                  { id: 'digital-design', label: 'Digital Design' }
-                                ].map(spec => {
-                                  const isActive = activeS6Specialization === spec.id;
-                                  return (
-                                    <button
-                                      key={spec.id}
-                                      onClick={() => setActiveS6Specialization(spec.id)}
-                                      className={`
-                                        text-sm px-4 py-1.5 rounded-md font-medium transition-all
-                                        ${isActive 
-                                          ? `bg-${color}-100 text-${color}-800 shadow-sm` 
-                                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                                        }
-                                      `}
-                                    >
-                                      {spec.label}
-                                    </button>
-                                  );
-                                })}
-                              </div>
-                          </div>
-                       ) : (
-                          <div className="space-y-1">
-                            <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
-                              {sem === 5 ? (
-                                <span>Praktijk semester</span>
-                              ) : (
-                                <>
-                                  <span className="text-gray-500 font-normal">Semester {sem}:</span>
-                                  {displayItem.semesterName}
-                                </>
-                              )}
-                            </h3>
-                          </div>
-                       )}
+                       <div className="flex-1">
+                         {/* Bij S6 tonen we ALTIJD de specialisatie selector, ongeacht het speelveld */}
+                         {sem === 6 ? (
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                <span className="font-bold text-gray-900 text-lg whitespace-nowrap">Specialisatie semester:</span>
+                                <div className="flex bg-white p-1 rounded-lg border border-gray-200 shadow-sm">
+                                  {[
+                                    { id: 'brand-design', label: 'Brand Design' },
+                                    { id: 'immersive-design', label: 'Immersive Design' },
+                                    { id: 'digital-design', label: 'Digital Design' }
+                                  ].map(spec => {
+                                    const isActive = activeS6Specialization === spec.id;
+                                    return (
+                                      <button
+                                        key={spec.id}
+                                        onClick={() => setActiveS6Specialization(spec.id)}
+                                        className={`
+                                          text-sm px-4 py-1.5 rounded-md font-medium transition-all
+                                          ${isActive 
+                                            ? `bg-${color}-100 text-${color}-800 shadow-sm` 
+                                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                          }
+                                        `}
+                                      >
+                                        {spec.label}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                            </div>
+                         ) : (
+                            <div className="space-y-1">
+                              <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
+                                {sem === 5 ? (
+                                  <span>Praktijk semester</span>
+                                ) : (
+                                  <>
+                                    <span className="text-gray-500 font-normal">Semester {sem}:</span>
+                                    {displayItem.semesterName}
+                                  </>
+                                )}
+                              </h3>
+                            </div>
+                         )}
+                       </div>
 
                     </div>
 
@@ -373,30 +450,63 @@ export function LeerlijnenView() {
                          </div>
 
                          {displayItem.zelcomDescription ? (
-                           <div className="bg-blue-50/50 rounded-lg p-4 border border-blue-100 h-full">
-                              {/* Titel (bijv. "Niveau 1: Beginnend") */}
-                              <div className="font-bold text-blue-800 text-sm mb-3 pb-2 border-b border-blue-100">
-                                {displayItem.zelcomDescription.split('\n')[0]}
-                              </div>
-                              
-                              {/* Inhoud (bullet points) */}
-                              {displayItem.zelcomDescription.includes('\n') && (
-                                <ul className="space-y-2">
-                                  {displayItem.zelcomDescription.split('\n').slice(1).map((line, i) => {
-                                    const cleanLine = line.replace(/^[•\-\*]\s*/, '').trim(); // Verwijder bullet chars
-                                    if (!cleanLine) return null;
-                                    return (
-                                      <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
-                                        <span className="leading-snug">{cleanLine}</span>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              )}
+                           <div className="bg-gradient-to-br from-blue-50 to-indigo-50/30 rounded-lg p-5 border border-blue-200 shadow-sm">
+                              {/* Parse title and content */}
+                              {(() => {
+                                const lines = displayItem.zelcomDescription.split('\n').filter(line => line.trim());
+                                const titleLine = lines[0];
+                                const contentLines = lines.slice(1);
+                                
+                                // Check if it starts with "Niveau" or "ZELCOM"
+                                const isShortFormat = titleLine.startsWith('Niveau');
+                                const isLongFormat = titleLine.includes('ZELCOM');
+                                
+                                return (
+                                  <>
+                                    {/* Title */}
+                                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-blue-200/60">
+                                      <div className="flex-1">
+                                        <div className="font-bold text-blue-900 text-base">
+                                          {isShortFormat ? titleLine : `Semester ${sem}`}
+                                        </div>
+                                        {isShortFormat && (
+                                          <div className="text-xs text-blue-600 mt-0.5">
+                                            Zelfstandigheidsniveau
+                                          </div>
+                                        )}
+                                      </div>
+                                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-sm">
+                                        {sem}
+                                      </div>
+                                    </div>
+                                    
+                                    {/* Content */}
+                                    {contentLines.length > 0 ? (
+                                      <div className="space-y-2.5">
+                                        {contentLines.map((line, i) => {
+                                          const cleanLine = line.replace(/^[•\\-\\*]\\s*/, '').trim();
+                                          if (!cleanLine) return null;
+                                          return (
+                                            <div key={i} className="flex items-start gap-2.5">
+                                              <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                                              <span className="text-sm text-gray-800 leading-relaxed">{cleanLine}</span>
+                                            </div>
+                                          );
+                                        })}
+                                      </div>
+                                    ) : (
+                                      <p className="text-sm text-gray-600 italic">
+                                        Dit niveau geeft de verwachte zelfstandigheid en complexiteit weer.
+                                      </p>
+                                    )}
+                                  </>
+                                );
+                              })()}
                            </div>
                          ) : (
-                           <p className="text-sm text-gray-400 italic">Geen ZELCOM niveau gedefinieerd.</p>
+                           <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                             <p className="text-sm text-gray-500 italic">Geen ZELCOM niveau gedefinieerd.</p>
+                           </div>
                          )}
                       </div>
 

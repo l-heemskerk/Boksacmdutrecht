@@ -2,8 +2,9 @@ import { LearningOutcome, learningOutcomeLabels } from '../types/curriculum';
 import { getProgressionsByOutcome } from '../data/learningOutcomeProgressions';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { useState } from 'react';
-import { Info, CheckCircle2, X } from 'lucide-react';
+import { Info, CheckCircle2, X, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface LearningOutcomeViewProps {
@@ -71,6 +72,7 @@ const highlightText = (text: string, wordsToHighlight: string[]) => {
 export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
   const [selectedOutcome, setSelectedOutcome] = useState<LearningOutcome>('context');
   const [showInfo, setShowInfo] = useState(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const progressions = getProgressionsByOutcome(selectedOutcome);
   
@@ -84,6 +86,12 @@ export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
 
   const currentOutcomeLabel = learningOutcomeLabels[selectedOutcome];
   const colorBase = outcomeBaseColors[selectedOutcome];
+
+  // Handler voor leeruitkomst selectie (sluit sheet op mobile)
+  const handleOutcomeSelect = (outcome: LearningOutcome) => {
+    setSelectedOutcome(outcome);
+    setIsFilterOpen(false);
+  };
 
   return (
     <div className="space-y-8">
@@ -114,8 +122,71 @@ export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
         )}
       </AnimatePresence>
 
-      {/* Horizontal Menu Bar */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-2 sticky top-4 z-20">
+      {/* Mobile: Filter Button + Sheet */}
+      <div className="md:hidden sticky top-4 z-30">
+        <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
+          <SheetTrigger asChild>
+            <button className="w-full bg-white/95 backdrop-blur-md rounded-xl shadow-sm border border-gray-200 p-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <div className={`p-2 rounded-lg bg-${colorBase}-50`}>
+                  <div className={`w-5 h-5 rounded bg-${colorBase}-500`} />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-gray-500 font-medium">Leeruitkomst</div>
+                  <div className="font-bold text-gray-900">{currentOutcomeLabel}</div>
+                </div>
+              </div>
+              <Filter className="w-5 h-5 text-gray-400" />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+            <SheetHeader>
+              <SheetTitle className="flex items-center gap-2">
+                <Filter className="w-5 h-5" />
+                Selecteer Leeruitkomst
+              </SheetTitle>
+            </SheetHeader>
+            <div className="mt-6 space-y-2">
+              {outcomes.map((outcome) => {
+                const isActive = selectedOutcome === outcome;
+                const base = outcomeBaseColors[outcome];
+                
+                return (
+                  <button
+                    key={outcome}
+                    onClick={() => handleOutcomeSelect(outcome)}
+                    className={`
+                      w-full px-4 py-4 rounded-lg text-left transition-all duration-200 flex items-center gap-3 border
+                      ${isActive 
+                        ? `bg-${base}-50 border-${base}-200 shadow-sm` 
+                        : 'bg-white border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                      }
+                    `}
+                  >
+                    <div className={`p-2 rounded-lg ${isActive ? `bg-${base}-100` : 'bg-gray-100'}`}>
+                      <div className={`w-5 h-5 rounded ${isActive ? `bg-${base}-500` : 'bg-gray-400'}`} />
+                    </div>
+                    <div className="flex-1">
+                      <div className={`font-bold ${isActive ? `text-${base}-900` : 'text-gray-700'}`}>
+                        {learningOutcomeLabels[outcome]}
+                      </div>
+                      {isActive && (
+                        <div className={`text-xs text-${base}-600 mt-0.5`}>Actieve leeruitkomst</div>
+                      )}
+                    </div>
+                    {isActive && (
+                      <div className={`w-2 h-2 rounded-full bg-${base}-500`} />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      {/* Desktop: Horizontal Menu Bar */}
+      <div className="hidden md:block bg-white rounded-xl shadow-sm border border-gray-200 p-2 sticky top-4 z-20">
         <div className="flex flex-wrap md:flex-nowrap gap-2">
           {outcomes.map(outcome => {
             const isActive = selectedOutcome === outcome;

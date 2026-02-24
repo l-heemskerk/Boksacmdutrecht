@@ -8,7 +8,12 @@ export function HelpDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-600">
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="border-2 border-gray-300 bg-white text-gray-600 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900 transition-all duration-200 shadow-sm h-10 w-10"
+          title="Help & Uitleg"
+        >
           <HelpCircle className="w-5 h-5" />
         </Button>
       </DialogTrigger>
