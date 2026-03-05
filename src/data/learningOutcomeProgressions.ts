@@ -1,14 +1,14 @@
 import { LearningOutcomeProgression } from '../types/curriculum';
 
-// Zelcom niveau mapping per semester
+// Zelcom niveau mapping per semester - aangepast naar letters zoals in leerlijnen
 const zelcomLevelMapping: Record<number, string> = {
-  1: 'Beginnend - onder begeleiding',
-  2: 'Gevorderd - onder toezicht',
-  3: 'Bekwaam - zelfstandig',
-  4: 'Bekwaam - zelfstandig',
-  5: 'Vaardig - adviserend',
-  6: 'Expert - specialistisch',
-  7: 'Meester - autonoom'
+  1: 'A',
+  2: 'B',
+  3: 'B',
+  4: 'C',
+  5: 'C',
+  6: 'D',
+  7: 'E'
 };
 
 export const learningOutcomeProgressions: LearningOutcomeProgression[] = [
@@ -75,7 +75,7 @@ export const learningOutcomeProgressions: LearningOutcomeProgression[] = [
     semester: 2,
     semesterName: 'CHALLENGE',
     outcome: 'verbinden',
-    description: 'Je toont initiatief om feedback te geven, te ontvangen en kennnis te delen. Je organiseert het samenwerkingsproces zelf volgens passende methoden, daarin houd je rekening met de belanghebbeden.',
+    description: 'Je toont initiatief om feedback te geven, te ontvangen en kennis te delen. Je organiseert het samenwerkingsproces zelf volgens passende methoden, daarin houd je rekening met de belanghebbeden.',
     zelcomLevel: zelcomLevelMapping[2]
   },
   {
@@ -209,7 +209,7 @@ export const learningOutcomeProgressions: LearningOutcomeProgression[] = [
     semester: 6,
     semesterName: 'SPECIALISATIE',
     outcome: 'ontwerpen',
-    description: 'Je kunt op basis van inzichten uit je onderzoek tot passende concepten komen, hierbij rekening houdend met de belanghebbenden. Je verkent iteratief verschillende (analoge en/of digitale) mogelijkheden en uitwerkingen. Je licht de impact van concepten en consequenties van het ontwerp toe. Je selecteert bestaande en eigen ontwerpstrategieën en -methodes en zet deze in. Je kunt zelfstandig en initiatiefrijk het ontwerpproces inrichten, plannen, uitvoeren, monitoren en beheren.',
+    description: 'Je kunt op basis van inzichten uit je onderzoek tot passende concepten komen, hierbij rekening houdend met de belanghebbenden. Je verkent iteratief verschillende (analoge en/of digitale) mogelijkheden en uitwerkingen. Je licht de impact van concepten en consequenties van het ontwerp toe. Je selecteert bestaande en eigen ontwerpstrategieën en -methoden en zet deze in. Je kunt zelfstandig en initiatiefrijk het ontwerpproces inrichten, plannen, uitvoeren, monitoren en beheren.',
     zelcomLevel: zelcomLevelMapping[6]
   },
   {

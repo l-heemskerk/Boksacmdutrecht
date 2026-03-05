@@ -1,73 +1,20 @@
-import { LearningOutcome, learningOutcomeLabels } from '../types/curriculum';
+import { LearningOutcome, learningOutcomeLabels, semesterColors } from '../types/curriculum';
 import { getProgressionsByOutcome } from '../data/learningOutcomeProgressions';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent, CardHeader } from './ui/card';
 import { Badge } from './ui/badge';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { useState } from 'react';
-import { Info, CheckCircle2, X, Filter } from 'lucide-react';
+import { Info, BookOpen, X, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { getLearningOutcomeIcon } from '../utils/learningOutcomeIcons';
+import { outcomeBaseColors, outcomeStyles, yearGroups } from '../utils/constants';
+import { getNewWords, highlightText } from '../utils/textHelpers';
 
 interface LearningOutcomeViewProps {
   searchQuery: string;
 }
 
 const outcomes: LearningOutcome[] = ['context', 'ontwerpen', 'prototype', 'verbinden', 'reflecteren'];
-
-// Base colors matching types/curriculum.ts
-// Context: Blue, Ontwerpen: Purple, Prototype: Green, Verbinden: Orange, Reflecteren: Pink
-const outcomeBaseColors: Record<LearningOutcome, string> = {
-  context: 'blue',
-  ontwerpen: 'purple',
-  prototype: 'green',
-  verbinden: 'orange',
-  reflecteren: 'pink'
-};
-
-// Year grouping configuration
-const yearGroups = [
-  { year: 1, label: 'Jaar 1', semesters: [1, 2], subLabel: 'Basis & Oriëntatie' },
-  { year: 2, label: 'Jaar 2', semesters: [3, 4], subLabel: 'Verdieping & Verbreding' },
-  { year: 3, label: 'Jaar 3', semesters: [5, 6], subLabel: 'Profilering & Praktijk' },
-  { year: 4, label: 'Jaar 4', semesters: [7, 8], subLabel: 'Afstuderen' },
-];
-
-const getNewWords = (currentText: string, previousText?: string): string[] => {
-  if (!previousText) return [];
-  const currentWords = currentText.toLowerCase().split(/\s+/);
-  const previousWords = previousText.toLowerCase().split(/\s+/);
-  const newPhrases: string[] = [];
-  let i = 0;
-  while (i < currentWords.length) {
-    let foundInPrevious = false;
-    for (let j = 0; j < previousWords.length; j++) {
-      if (currentWords[i] === previousWords[j]) {
-        foundInPrevious = true;
-        break;
-      }
-    }
-    if (!foundInPrevious && currentWords[i].length > 3) {
-      newPhrases.push(currentWords[i]);
-    }
-    i++;
-  }
-  return newPhrases;
-};
-
-const highlightText = (text: string, wordsToHighlight: string[]) => {
-  if (wordsToHighlight.length === 0) return text;
-  const parts = text.split(/(\s+)/);
-  return parts.map((part, idx) => {
-    const cleanPart = part.toLowerCase().replace(/[.,;:!?]/g, '');
-    if (wordsToHighlight.some(word => cleanPart.includes(word))) {
-      return (
-        <span key={idx} className="bg-yellow-100 text-yellow-900 px-0.5 rounded font-medium mx-0.5 box-decoration-clone">
-          {part}
-        </span>
-      );
-    }
-    return part;
-  });
-};
 
 export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
   const [selectedOutcome, setSelectedOutcome] = useState<LearningOutcome>('context');
@@ -86,6 +33,7 @@ export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
 
   const currentOutcomeLabel = learningOutcomeLabels[selectedOutcome];
   const colorBase = outcomeBaseColors[selectedOutcome];
+  const styles = outcomeStyles[selectedOutcome];
 
   // Handler voor leeruitkomst selectie (sluit sheet op mobile)
   const handleOutcomeSelect = (outcome: LearningOutcome) => {
@@ -104,19 +52,25 @@ export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden"
           >
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start gap-3 relative mb-2">
-              <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <div className="flex-1 text-sm text-blue-900 pr-8">
-                <p className="leading-relaxed">
-                  De leeruitkomsten zijn datgene wat studenten dienen aan te tonen aan het einde van een semester. CMD-Utrecht werkt door het hele curriculum met dezelfde vijf leeruitkomsten. In het overzicht hieronder geeft de <span className="bg-yellow-100 text-yellow-900 px-1 rounded font-medium">gemarkeerde tekst</span> nieuwe onderdelen t.o.v. vorig semester weer.
-                </p>
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200 shadow-sm">
+              <div className="flex items-start justify-between gap-4 p-6">
+                <div className="flex-1">
+                  <h2 className="text-gray-900 mb-3 flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-blue-600" />
+                    Leeruitkomsten
+                  </h2>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    De leeruitkomsten zijn datgene wat studenten dienen aan te tonen aan het einde van een semester. CMD-Utrecht werkt door het hele curriculum met dezelfde vijf leeruitkomsten. In het overzicht hieronder geeft de <span className="bg-yellow-100 text-yellow-900 px-1 rounded font-medium">gemarkeerde tekst</span> nieuwe onderdelen t.o.v. vorig semester weer.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => setShowInfo(false)}
+                  className="flex-shrink-0 p-1 hover:bg-blue-100 rounded transition-colors"
+                  aria-label="Verberg introductie"
+                >
+                  <X className="w-5 h-5 text-gray-500" />
+                </button>
               </div>
-              <button 
-                onClick={() => setShowInfo(false)}
-                className="absolute right-2 top-2 p-1.5 text-blue-400 hover:text-blue-600 hover:bg-blue-100 rounded-full transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
             </div>
           </motion.div>
         )}
@@ -240,25 +194,24 @@ export function LearningOutcomeView({ searchQuery }: LearningOutcomeViewProps) {
                       key={`${progression.semester}-${progression.semesterName}-${progression.outcome}`}
                       className="group relative"
                     >
-                       <Card className={`border-l-4 hover:shadow-md transition-shadow duration-200 border-gray-200`} style={{ borderLeftColor: `var(--color-${colorBase}-500)` }}>
+                       <Card className={`border ${styles.border} shadow-sm hover:shadow-md transition-shadow duration-200`}>
                          <CardContent className="p-6">
                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-100">
                              <div className="flex items-center gap-3">
-                               <Badge variant="secondary" className={`bg-${colorBase}-100 text-${colorBase}-800 border-${colorBase}-200 px-3 py-1 text-sm font-semibold border`}>
+                               <Badge variant="secondary" className="bg-white border-gray-300 text-gray-700 px-3 py-1 text-sm font-semibold">
                                  Semester {progression.semester}
                                </Badge>
                                <h4 className="font-semibold text-gray-900">{progression.semesterName}</h4>
                              </div>
                              {progression.zelcomLevel && (
-                               <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 px-3 py-1 rounded-full border border-gray-100">
-                                 <CheckCircle2 className="w-4 h-4 text-green-600" />
-                                 <span>Niveau: <span className="font-medium text-gray-900">{progression.zelcomLevel}</span></span>
-                               </div>
+                               <Badge variant="outline" className={`${styles.badgeBg} ${styles.badgeBorder} ${styles.badgeText} text-sm font-semibold`}>
+                                 ZELCOM niveau {progression.zelcomLevel}
+                               </Badge>
                              )}
                            </div>
                            
                            <div className="prose prose-blue max-w-none">
-                             <p className="text-gray-700 leading-relaxed text-base">
+                             <p className="text-sm text-gray-700 leading-relaxed">
                                {highlightText(progression.description, newWords)}
                              </p>
                            </div>

@@ -208,6 +208,15 @@ export function HelpDialog() {
                 </div>
 
 
+                <div className="space-y-2 pt-3 border-t">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-blue-600" />
+                    <h4 className="text-gray-900">ZELCOM</h4>
+                  </div>
+                  <p className="text-gray-700 text-sm">
+                    De opbouw van het curriculum volgt expliciet het ZELCOM-model (Bulthuis, 2013), waarin de ontwikkeling van studenten wordt beschreven langs zes samenhangende dimensies: Zelfstandigheid, Expertise, Leercontext, Complexiteit, Organisatorische rol en Multidisciplinariteit. Deze dimensies maken zichtbaar hoe studenten gedurende de opleiding groeien van beginnend naar startbekwaam professional.
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>

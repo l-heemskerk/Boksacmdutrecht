@@ -10,46 +10,46 @@ export interface ActivityProfessionalProduct {
 export const professionalProductsByActivity: Record<string, ActivityProfessionalProduct[]> = {
   // ==================== SEMESTER 1 ====================
   '1_basecamp': [
-    { outcome: 'context', products: ['Eerste verkenningen gebruikerscontext', 'Observatienotities en foto\'s'] },
-    { outcome: 'ontwerpen', products: ['Conceptschetsen en idee-exploraties', 'Rapid prototyping resultaten'] },
-    { outcome: 'prototype', products: ['Eerste fysieke prototypes (papier, karton)', 'Foto-documentatie testmomenten'] },
-    { outcome: 'verbinden', products: ['Teampresentatie slides', 'Kennismakingsdocumentatie team'] },
-    { outcome: 'reflecteren', products: ['Eerste reflectieverslag in Portflow', 'Persoonlijke introductie CMD'] }
+    { outcome: 'context', products: ['Uitgewerkte Good, best & bad practices', 'Uitgewerkte interview opzet en resultaten'] },
+    { outcome: 'ontwerpen', products: [] },
+    { outcome: 'prototype', products: ['al het gemaakte werk uploaden in Portflow'] },
+    { outcome: 'verbinden', products: ['Collage / presentatie leerteam'] },
+    { outcome: 'reflecteren', products: ['Reflectie eerste week'] }
   ],
   '1_visual_design': [
-    { outcome: 'context', products: ['Literatuuronderzoek grafisch ontwerp', 'Moodboard met inspiratiebronnen', 'Good/best/bad practices analyse', 'Doelgroep interviews en analyse'] },
-    { outcome: 'ontwerpen', products: ['Moodboards en mindmaps', 'Typografie experimenten', 'Kleurstudies', 'Conceptschetsen visuele identiteit', 'Design rationale document'] },
-    { outcome: 'prototype', products: ['Poster ontwerpen', 'Huisstijl elementen', 'Compositie studies in Adobe', 'Eindproduct visuele communicatie'] },
-    { outcome: 'verbinden', products: ['Retrospective documentatie', 'Peer feedback notities', 'Teampresentaties'] },
-    { outcome: 'reflecteren', products: ['Portflow datapunten Visual Design', 'Zelfevaluatie visueel vakmanschap', 'Leerdoelen formulering'] }
+    { outcome: 'context', products: ['Uitgewerkte Good, best & bad practices', 'Uitgewerkte interview opzet en resultaten'] },
+    { outcome: 'ontwerpen', products: ['Overzicht iteratief proces', 'Meerdere conceptuitwerkingen'] },
+    { outcome: 'prototype', products: ['Digitaal ontwerp van poster die voldoet aan de theorie rondom compositie, typografie en kleur', 'Huisstijl handboek'] },
+    { outcome: 'verbinden', products: ['Terugblik op samenwerking project Visual'] },
+    { outcome: 'reflecteren', products: ['Reflectie op leerproces en eigen ontwikkeling tijdens Visual design'] }
   ],
   '1_interaction_design': [
-    { outcome: 'context', products: ['User research notities', 'Persona\'s en user stories', 'Veldonderzoek verslagen', 'Kwantitatief onderzoeksrapport'] },
-    { outcome: 'ontwerpen', products: ['Customer Journey Maps', 'User flows', 'Card sorting resultaten', 'Wireframe varianten'] },
-    { outcome: 'prototype', products: ['Low-fidelity wireframes', 'Klikbaar Figma prototype', 'Usability test rapport', 'Heuristische evaluatie'] },
-    { outcome: 'verbinden', products: ['Retrospective met DAKI methode', 'Feedback sessie documentatie', 'Team samenwerking reflectie'] },
-    { outcome: 'reflecteren', products: ['Portflow: leerdoelen Interaction Design', 'STARR reflectie op project', 'Zelfevaluatie UX vaardigheden'] }
+    { outcome: 'context', products: ['Uitgewerkte Good, best & bad practices', 'Vertaling van gebruikersinzichten naar richtinggevende Design criteria / ontwerpprincipes'] },
+    { outcome: 'ontwerpen', products: ['Customer journey map (huidige en gewenste situatie)', 'Uitgewerkte user stories'] },
+    { outcome: 'prototype', products: ['Uitgewerkte flowcharts en wireframes', 'Een klikbaar high-fi prototype van de verbeterde website in Figma.'] },
+    { outcome: 'verbinden', products: ['Terugblik op samenwerking en eigen rol in het Interaction design project.'] },
+    { outcome: 'reflecteren', products: ['Reflectie op leerproces en eigen ontwikkeling tijdens Visual design'] }
   ],
   '1_social_design': [
-    { outcome: 'context', products: ['Interview verslagen doelgroep', 'Empathy maps', 'Design probes documentatie', 'Field trial resultaten', 'Gedragsanalyse met Fogg model'] },
-    { outcome: 'ontwerpen', products: ['Co-creatie concepten met doelgroep', 'Brainstorm resultaten', 'Conceptontwikkeling varianten', 'Onderbouwing ontwerpkeuzes'] },
-    { outcome: 'prototype', products: ['Fysiek prototype voor doelgroep', 'Iteratieve test versies', 'Foto documentatie prototypes', 'Feedbackverwerking rapport'] },
-    { outcome: 'verbinden', products: ['Groepsproces reflectie met Belbin', 'Feedback sessies documentatie', 'Stakeholder communicatie logs'] },
-    { outcome: 'reflecteren', products: ['Korthagen reflectie op sociaal ontwerp', 'Portflow: zelfevaluatie empathisch vermogen', 'Leerdoelen sociale impact design'] }
+    { outcome: 'context', products: ['Doelgroepdossier', 'Good, best, bad practices van social design'] },
+    { outcome: 'ontwerpen', products: ['Ideeselectie en -uitwerking', 'Meerdere conceptuitwerkingen'] },
+    { outcome: 'prototype', products: ['Maquette van de immersieve ervaring', 'immersive prototype; een plek/situatie/oplossing waar mensen het werkende high-fi prototype kunnen ervaren'] },
+    { outcome: 'verbinden', products: ['Terugblik op samenwerking en eigen rol in het social design projecg'] },
+    { outcome: 'reflecteren', products: ['Een reflectie op individuele bijdrage social design project'] }
   ],
   '1_workshopweek': [
-    { outcome: 'context', products: ['Workshop verslagen', 'Nieuwe methoden documentatie'] },
-    { outcome: 'ontwerpen', products: ['Workshop deliverables', 'Experimentele schetsen'] },
-    { outcome: 'prototype', products: ['Workshop prototypes', 'Feedback documentatie'] },
-    { outcome: 'verbinden', products: ['Samenwerking buiten cluster', 'Netwerk notities'] },
-    { outcome: 'reflecteren', products: ['Reflectie op nieuwe vaardigheden', 'Leerpunten workshop'] }
+    { outcome: 'context', products: [] },
+    { outcome: 'ontwerpen', products: [] },
+    { outcome: 'prototype', products: [] },
+    { outcome: 'verbinden', products: [] },
+    { outcome: 'reflecteren', products: ['Reflectie op leerproces en eigen ontwikkeling tijdens Visual design'] }
   ],
-  '1_film-hackathon': [
-    { outcome: 'context', products: ['Storyboard en conceptschets', 'Filmische research'] },
-    { outcome: 'ontwerpen', products: ['Moodboard film', 'Visueel concept en verhaal'] },
-    { outcome: 'prototype', products: ['Korte film (eindproduct)', 'Montage documentatie'] },
-    { outcome: 'verbinden', products: ['Team samenwerking zonder begeleiding', 'Filmcrew rolverdeling'] },
-    { outcome: 'reflecteren', products: ['Reflectie op creatief proces', 'Zelfstandig werken evaluatie'] }
+  '1_hackathon': [
+    { outcome: 'context', products: ['al het relevante werk waarin is gewerkt tijdens de hackathon'] },
+    { outcome: 'ontwerpen', products: ['al het relevante werk waarin is gewerkt tijdens de hackathon'] },
+    { outcome: 'prototype', products: ['eindproductie Film'] },
+    { outcome: 'verbinden', products: ['Verslag van samenwerkingbinnen leerteam'] },
+    { outcome: 'reflecteren', products: ['Kort reflectieverslag over het leerproces tijdens de ahackathon week'] }
   ],
 
   // ==================== SEMESTER 2 ====================

@@ -11,6 +11,7 @@ export interface SemesterActivity {
   kennis: string;
   vaardigheden: string;
   houding: string;
+  deliverables?: string;
 }
 
 export interface SpeelveldData {
@@ -45,10 +46,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Basecamp',
     duur: '1 week',
     leeruitkomst: 'context',
-    speelvelden: '',
-    kennis: 'introductie in Design thinking (context)',
-    vaardigheden: 'Snel ideeen verkennen',
-    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.'
+    beschrijving: '',
+    speelvelden: 'Design',
+    kennis: 'Basis introductie in Design thinking (context)',
+    vaardigheden: 'informatie verzamelen rondom een ontwerpvraag',
+    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.',
+    deliverables: 'Geen'
   },
   {
     semester: 1,
@@ -56,10 +59,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Basecamp',
     duur: '1 week',
     leeruitkomst: 'ontwerpen',
-    speelvelden: '',
-    kennis: 'intoductie in Design thinking (ideate)',
-    vaardigheden: 'Veel experimenteren en maken onder tijdsdruk',
-    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    beschrijving: '',
+    speelvelden: 'Design',
+    kennis: 'Basis introductie in Design thinking (ontwerpen)',
+    vaardigheden: 'Snel ideeen verkennen; Veel experimenteren en maken onder tijdsdruk',
+    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.',
+    deliverables: 'Geen'
   },
   {
     semester: 1,
@@ -67,10 +72,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Basecamp',
     duur: '1 week',
     leeruitkomst: 'prototype',
-    speelvelden: '',
-    kennis: 'introductie in Design thinking (prototype & testen)',
+    beschrijving: '',
+    speelvelden: 'Design',
+    kennis: 'Basis introductie in Design thinking (prototype & testen)',
     vaardigheden: 'gestuurd iteratief te werk gaan',
-    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.'
+    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.',
+    deliverables: 'al het gemaakte werk uploaden in Portflow'
   },
   {
     semester: 1,
@@ -78,10 +85,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Basecamp',
     duur: '1 week',
     leeruitkomst: 'verbinden',
-    speelvelden: '',
-    kennis: 'Geen kennis',
-    vaardigheden: 'Pro-actief kennis maken',
-    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.'
+    beschrijving: '',
+    speelvelden: 'Design',
+    kennis: 'Geen',
+    vaardigheden: 'Pro-actief deelnemen aan groepsproces',
+    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.',
+    deliverables: 'Collage / presentatie leerteam'
   },
   {
     semester: 1,
@@ -89,10 +98,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Basecamp',
     duur: '1 week',
     leeruitkomst: 'reflecteren',
-    speelvelden: '',
-    kennis: 'Geen kennis',
+    beschrijving: '',
+    speelvelden: 'Design',
+    kennis: 'Geen',
     vaardigheden: 'Eerste reflecties (eerste week) op kunnen schrijven',
-    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.'
+    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.',
+    deliverables: 'Reflectie eerste week'
   },
 
   // Visual Design
@@ -102,10 +113,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Visual Design',
     duur: '4 weken',
     leeruitkomst: 'context',
-    speelvelden: '',
-    kennis: 'CMD Methods: Good, best and bad practices; Interviews; Literature study Boek Grafisch ontwerp deel 1',
-    vaardigheden: 'Uitvoeren van desk research; Aangereikte Onderzoekmethodes uitvoeren (passende grondigheid); Aanspreken van doelgroep; Onderzoeksresultaten delen',
-    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Onderzoekend vermogen',
+    kennis: 'Good, best and bad practices; Interviews',
+    vaardigheden: 'Aangereikte Onderzoekmethodes uitvoeren (passende grondigheid); Benaderen en in gesprek gaan met doelgroep; Onderzoeksresultaten inzichtelijk delen',
+    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.',
+    deliverables: 'Uitgewerkte Good, best & bad practices; Uitgewerkte interview opzet en resultaten'
   },
   {
     semester: 1,
@@ -113,10 +126,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Visual Design',
     duur: '4 weken',
     leeruitkomst: 'ontwerpen',
-    speelvelden: '',
-    kennis: 'Design thinking: Introductie basis principes; werken volgens de Double diamond methode; Divergeren - Convergeren; Moodboards en mindmaps; Concepten',
-    vaardigheden: 'Out of the box denken; Simpele concepten bedenken; Digitaal en analoog ideeen uitwerken',
-    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Onderzoekend vermogen',
+    kennis: 'Boek Grafisch ontwerp deel 1; Moodboards en mindmaps; Basisbegrip concepten',
+    vaardigheden: 'Digitaal en analoog ideeen uitwerken; Out of the box denken',
+    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.',
+    deliverables: 'Overzicht iteratief proces; Meerdere conceptuitwerkingen'
   },
   {
     semester: 1,
@@ -124,10 +139,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Visual Design',
     duur: '4 weken',
     leeruitkomst: 'prototype',
-    speelvelden: '',
-    kennis: 'Boek Grafisch ontwerp Deel 1; Compositie; Typografie; Kleur',
-    vaardigheden: 'Basic Adobe Skills (Photoshop, Indesign, Illustrator); Doelgroepen bevragen over gemaakte prototypes; Eindwerp exposeren',
-    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Onderzoekend vermogen',
+    kennis: 'Boek Grafisch ontwerp Deel 1; Kennis van ontwerptools; Peer review',
+    vaardigheden: 'Basics Adobe Skills (photoshop, illustrator); Doelgroepen bevragen over gemaakte low, en high fi prototypes',
+    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.',
+    deliverables: 'Digitaal ontwerp van poster die voldoet aan de theorie rondom compositie, typografie en kleur; Huisstijl handboek'
   },
   {
     semester: 1,
@@ -135,10 +152,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Visual Design',
     duur: '4 weken',
     leeruitkomst: 'verbinden',
-    speelvelden: '',
-    kennis: 'Wat, hoe en waarom van een retrospective',
-    vaardigheden: 'Actief en constructief feedback geven en ontvangen; Toepassen retrospective methodes (bijvoorbeeld DAKI, warme douche)',
-    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Onderzoekend vermogen',
+    kennis: 'Wat, hoe en waarom van een retrospective; Feedback leren vragen (zo doe je dat) leerteamactiviteit',
+    vaardigheden: 'Actief en constructief feedback geven en ontvangen op de samenwerking; Toepassen retrospective methodes (bijvoorbeeld DAKI, warme douche)',
+    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.',
+    deliverables: 'Terugblik op samenwerking project Visual'
   },
   {
     semester: 1,
@@ -146,10 +165,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Visual Design',
     duur: '4 weken',
     leeruitkomst: 'reflecteren',
-    speelvelden: '',
-    kennis: 'Reflectiemethodes (STARR en Korthagen); Verantwoordelijkheidsgevoel (eigenaarschap tonen in leer, en werkproces)',
-    vaardigheden: 'Gebruik maken van Portflow: datapunten, zelfevaluaties en leerdoelen vastleggen',
-    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Onderzoekend vermogen',
+    kennis: 'Reflectiemethodes (STARR en Korthagen)',
+    vaardigheden: 'Verantwoordelijkheidsgevoel (eigenaarschap tonen in leer, en werkproces)',
+    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.',
+    deliverables: 'Reflectie op leerproces en eigen ontwikkeling tijdens Visual design'
   },
 
   // Interaction Design
@@ -159,10 +180,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Interaction Design',
     duur: '4 weken',
     leeruitkomst: 'context',
-    speelvelden: '',
-    kennis: 'CMD Methods: veld onderzoek; Kwantitatief onderzoek; Persona\'s; UI Design patterns',
-    vaardigheden: 'Inzichten ophalen doelgroep; Onderzoekresultaten analyseren; keuzes onderbouwen vanuit gebruikersbehoeften',
-    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Onderzoekend vermogen',
+    kennis: 'User centered design; UI Design patterns (https://ui-patterns.com/); Good, best and bad practices',
+    vaardigheden: 'Het in kaart brengen van behoeften, gedragingen van belanghebbenden; Het interpreteren van resultaten in relatie tot de ontwerpvraag',
+    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.',
+    deliverables: 'Uitgewerkte Good, best & bad practices; Vertaling van gebruikersinzichten naar richtinggevende Design criteria / ontwerpprincipes'
   },
   {
     semester: 1,
@@ -170,10 +193,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Interaction Design',
     duur: '4 weken',
     leeruitkomst: 'ontwerpen',
-    speelvelden: '',
-    kennis: 'Double Diamond methode; User stories; Customer Journey Maps; Card sorting',
-    vaardigheden: 'Iteratief ontwerpen; Conclusies onderzoek meenemen',
-    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Onderzoekend vermogen',
+    kennis: 'User stories; Customer journey maps; Card sorting; Reader Interaction Design',
+    vaardigheden: 'Verwerkt onderzoeksconclusies aantoonbaar in ontwerpbeslissingen; Ontwikkelt, test en verfijnt ontwerpen iteratief op basis van feedback en inzichten',
+    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.',
+    deliverables: 'Customer journey map (huidige en gewenste situatie); Uitgewerkte user stories'
   },
   {
     semester: 1,
@@ -181,10 +206,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Interaction Design',
     duur: '4 weken',
     leeruitkomst: 'prototype',
-    speelvelden: '',
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Onderzoekend vermogen',
     kennis: 'Flowcharts en wireframes; Heuristieken van Nielsen; Usability testing; Levels of fidelity (low/paper - high clickable)',
-    vaardigheden: 'flowcharts en wireframes maken; Basics Figma (design file); Uitvoeren van usability tests',
-    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.'
+    vaardigheden: 'flowcharts en wireframes maken; Basics Figma (design file); Opzetten en uitvoeren van usability tests',
+    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.',
+    deliverables: 'Uitgewerkte flowcharts en wireframes; Een klikbaar high-fi prototype van de verbeterde website in Figma.'
   },
   {
     semester: 1,
@@ -192,10 +219,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Interaction Design',
     duur: '4 weken',
     leeruitkomst: 'verbinden',
-    speelvelden: '',
-    kennis: 'Wat, hoe en waarom van een retrospective; Feedbackgeletterdheid (geven én ontvangen van feedback)',
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Onderzoekend vermogen',
+    kennis: 'Wat, hoe en waarom van een retrospective; Feedbackgeletterdheid:geven én ontvangen van feedback (leerteamactiviteit)',
     vaardigheden: 'Actief en constructief feedback geven en ontvangen; Toepassen retrospective methodes (bijvoorbeeld DAKI, warme douche); Teamgericht werken: samenwerken, rollen afstemmen en verantwoordelijkheid nemen; Reflecteren op groepsproces en de eigen rol daarin',
-    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.'
+    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.',
+    deliverables: 'Terugblik op samenwerking en eigen rol in het Interaction design project.'
   },
   {
     semester: 1,
@@ -203,10 +232,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Interaction Design',
     duur: '4 weken',
     leeruitkomst: 'reflecteren',
-    speelvelden: '',
-    kennis: 'Reflectiemethodes (STARR en Korthagen); Zelfsturend leren (regie nemen over eigen leerproces); Leerdoelen opstellen DART/SMART; Verantwoordelijkheidsgevoel (eigenaarschap tonen in leer- en werkproces)',
-    vaardigheden: 'Gebruik maken van Portflow: datapunten, zelfevaluaties en leerdoelen vastleggen; Zelfsturend leren: plannen, monitoren en bijsturen van eigen leerproces; Eigenaarschap en proactiviteit tonen: verantwoordelijkheid nemen voor persoonlijke ontwikkeling',
-    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Onderzoekend vermogen',
+    kennis: 'Reflectiemethodes (STARR en Korthagen); Zelfsturend leren: regie nemen over eigen leerproces (leerteamactiviteit)',
+    vaardigheden: 'Zelfsturend leren: plannen, monitoren en bijsturen van eigen leerproces; Eigenaarschap en proactiviteit tonen: verantwoordelijkheid nemen voor persoonlijke ontwikkeling',
+    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.',
+    deliverables: 'Reflectie op leerproces en eigen ontwikkeling tijdens Visual design'
   },
 
   // Workshopweek
@@ -216,10 +247,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Workshopweek',
     duur: '1 week',
     leeruitkomst: 'context',
+    beschrijving: '',
     speelvelden: '',
-    kennis: 'Nieuwe tools en methodes uit de ontwerppraktijk; Afhankelijk van specfieke workshop',
+    kennis: 'Afhankelijk van specfieke workshop',
     vaardigheden: 'Afhankelijk van specfieke workshop',
-    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.'
+    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.',
+    deliverables: 'Geen'
   },
   {
     semester: 1,
@@ -227,10 +260,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Workshopweek',
     duur: '1 week',
     leeruitkomst: 'ontwerpen',
+    beschrijving: '',
     speelvelden: '',
-    kennis: 'Tools en methodes uit het werkveld; Afhankelijk van specfieke workshop',
+    kennis: 'Afhankelijk van specfieke workshop',
     vaardigheden: 'Afhankelijk van specfieke workshop',
-    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.',
+    deliverables: 'Geen'
   },
   {
     semester: 1,
@@ -238,10 +273,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Workshopweek',
     duur: '1 week',
     leeruitkomst: 'prototype',
+    beschrijving: '',
     speelvelden: '',
-    kennis: 'Presentatievormen en feedbackmethodes binnen creatieve processen; Afhankelijk van specfieke workshop',
-    vaardigheden: 'Feedback verzamelen, analyseren en gebruiken om het eindproduct te verbeteren; Afhankelijk van specfieke workshop',
-    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.'
+    kennis: 'Afhankelijk van specfieke workshop',
+    vaardigheden: 'Afhankelijk van specfieke workshop',
+    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.',
+    deliverables: 'Geen'
   },
   {
     semester: 1,
@@ -249,10 +286,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Workshopweek',
     duur: '1 week',
     leeruitkomst: 'verbinden',
+    beschrijving: '',
     speelvelden: '',
-    kennis: 'Geen (tenzij specifiek in workshop aangereikt)',
-    vaardigheden: 'Samenwerken met medestudenten buiten het cluster',
-    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.'
+    kennis: 'Geen specifieke kennis, tenzij aangeboden in workshop',
+    vaardigheden: 'Afhankelijk van specfieke workshop',
+    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.',
+    deliverables: 'Geen'
   },
   {
     semester: 1,
@@ -260,10 +299,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Workshopweek',
     duur: '1 week',
     leeruitkomst: 'reflecteren',
+    beschrijving: '',
     speelvelden: '',
-    kennis: 'Geen (tenzij specifiek in workshop aangereikt)',
-    vaardigheden: 'Zelfstandig reflecteren op leermomenten',
-    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.'
+    kennis: 'Geen specifieke kennis, tenzij aangeboden in workshop',
+    vaardigheden: 'Zelfstandigheid in het kiezen van relevante workshops en deze koppelen aan eerder ontvangen feedback',
+    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.',
+    deliverables: 'Reflectie op leerproces en eigen ontwikkeling tijdens Visual design'
   },
 
   // Social Design
@@ -273,10 +314,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Social Design',
     duur: '4 weken',
     leeruitkomst: 'context',
-    speelvelden: '',
-    kennis: 'Design probes; field trial; Empathy maps; Sociona\'s; 5E experience model; Doelgroep onderzoek (motivaction model, youngworks); Gedragslenzen en Fogg behavior model',
-    vaardigheden: 'Interview technieken; Onderzoeksvaardigheden; Kwalitatieve onderzoeksmethoden; Documenteren, inzichtelijk maken & concluderen; Empatisch vermogen (inleven in doelgroep)',
-    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Maatschappij en toekomst, Onderzoekend vermogen',
+    kennis: 'Design probes (talking piece); Doelgroep onderzoek; Introductie in Social Design',
+    vaardigheden: 'Interview technieken; Onderzoeksvaardigheden; Documenteren, inzichtelijk maken & concluderen; Empatisch vermogen (inleven in doelgroep)',
+    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.',
+    deliverables: 'Doelgroepdossier; Good, best, bad practices van social design'
   },
   {
     semester: 1,
@@ -284,10 +327,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Social Design',
     duur: '4 weken',
     leeruitkomst: 'ontwerpen',
-    speelvelden: '',
-    kennis: 'Conceptontwikkeling; co-creatie; Brainstormtechnieken; Vervolg conceptontwikkeling',
-    vaardigheden: 'Conceptueel denken; weten wanneer te brainstormen; onderbouwen van ontwerpkeuzes met theorie; Ideeën genereren, selecteren en uitwerken; Co-creëren met gebruikers en teamleden; Argumenteren en onderbouwen van ontwerpkeuzes',
-    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Maatschappij en toekomst, Onderzoekend vermogen',
+    kennis: 'Vervolg conceptontwikkeling; Co-creatie introductie; Brainstormtechnieken',
+    vaardigheden: 'Conceptueel denken; Weten wanneer te brainstormen (Ideeën genereren, selecteren en uitwerken) theorie; Co-creëren met gebruikers en teamleden; Argumenteren en onderbouwen van ontwerpkeuzes',
+    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.',
+    deliverables: 'Ideeselectie en -uitwerking; Meerdere conceptuitwerkingen'
   },
   {
     semester: 1,
@@ -295,10 +340,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Social Design',
     duur: '4 weken',
     leeruitkomst: 'prototype',
-    speelvelden: '',
-    kennis: 'Iteratief werken en testen met gebruikers; Feedback verwerken en herontwerpen; Onderbouwen van ontwerpkeuzes met theorie en inzicht',
-    vaardigheden: 'Externe kennisbronnen benutten; Fysieke prototypes maken; Feedback vertalen naar verbeteringen; eindresultaat overtuigend presenteren; Eindresultaat verantwoorden',
-    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Maatschappij en toekomst, Onderzoekend vermogen',
+    kennis: 'Iteratief werken en testen met gebruikers; Feedback verwerken en herontwerpen',
+    vaardigheden: 'Fysieke prototypes maken; testresultaten vertalen naar verbeteringen; Eindresultaat overtuigend presenteren Eindresultaat verantwoorden',
+    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.',
+    deliverables: 'Maquette van de immersieve ervaring; immersive prototype; een plek/situatie/oplossing waar mensen het werkende high-fi prototype kunnen ervaren'
   },
   {
     semester: 1,
@@ -306,10 +353,12 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Social Design',
     duur: '4 weken',
     leeruitkomst: 'verbinden',
-    speelvelden: '',
-    kennis: 'Wat, hoe en waarom van een retrospective; Feedbackgeletterdheid (geven én ontvangen van feedback); Belbin groepsrollen (inzicht in teamrollen en dynamiek)',
-    vaardigheden: 'Actief en constructief feedback geven en ontvangen; Toepassen retrospective methodes (bijvoorbeeld DAKI, warme douche); Teamgericht werken: samenwerken, rollen afstemmen en verantwoordelijkheid nemen; Reflecteren op groepsproces en de eigen rol daarin; Communiceren en overleggen met teamleden en stakeholders',
-    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Maatschappij en toekomst, Onderzoekend vermogen',
+    kennis: 'Wat, hoe en waarom van een retrospective; Feedbackgeletterdheid:geven én ontvangen van feedback (leerteamactiviteit)',
+    vaardigheden: 'Actief en constructief feedback geven en ontvangen; Toepassen retrospective methodes (bijvoorbeeld DAKI, warme douche); Teamgericht werken: samenwerken, rollen afstemmen en verantwoordelijkheid nemen; Reflecteren op groepsproces en de eigen rol daarin',
+    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.',
+    deliverables: 'Terugblik op samenwerking en eigen rol in het social design projecg'
   },
   {
     semester: 1,
@@ -317,67 +366,79 @@ export const semesterActiviteiten: SemesterActivity[] = [
     activiteit: 'Social Design',
     duur: '4 weken',
     leeruitkomst: 'reflecteren',
-    speelvelden: '',
-    kennis: 'Reflectiemethodes (STARR en Korthagen); Zelfsturend leren (regie nemen over eigen leerproces); Leerdoelen opstellen DART/SMART; Verantwoordelijkheidsgevoel (eigenaarschap tonen in leer- en werkproces); Schrijfvaardigheden (reflectieverslagen, onderbouwde keuzes)',
-    vaardigheden: 'Gebruik maken van Portflow: datapunten, zelfevaluaties en leerdoelen vastleggen; Zelfsturend leren: plannen, monitoren en bijsturen van eigen leerproces; Schriftelijk reflecteren: onderbouwde verslagen en evaluaties schrijven; Eigenaarschap en proactiviteit tonen: verantwoordelijkheid nemen voor persoonlijke ontwikkeling',
-    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI, Mens en ervaring, Maatschappij en toekomst, Onderzoekend vermogen',
+    kennis: 'Reflectiemethodes (STARR en Korthagen); Zelfsturend leren: regie nemen over eigen leerproces (leerteamactiviteit)',
+    vaardigheden: 'Zelfsturend leren: plannen, monitoren en bijsturen van eigen leerproces; Eigenaarschap en proactiviteit tonen: verantwoordelijkheid nemen voor persoonlijke ontwikkeling',
+    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.',
+    deliverables: 'Een reflectie op individuele bijdrage social design project'
   },
 
-  // Film-hackathon
+  // Hackathon
   {
     semester: 1,
     semesterNaam: 'Semester 1 BASE',
-    activiteit: 'Film-hackathon',
+    activiteit: 'Hackathon',
     duur: '1 week',
     leeruitkomst: 'context',
-    speelvelden: '',
-    kennis: 'Basis filmtechnieken (camera, montage, storytelling); Toepassing van ontwerpprincipes in korte tijd; Toepassen van ontwerpvaardigheden in verschillende contexten',
-    vaardigheden: '',
-    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI',
+    kennis: 'Informatie verzamelen over n het thema van de film',
+    vaardigheden: 'Geen',
+    houding: 'Studenten tonen nieuwsgierigheid naar gebruikers en context, empathie voor belanghebbenden en een onderzoekende houding bij het verzamelen van informatie. Ze stellen vragen in plaats van direct oplossingen te zoeken en staan open voor nieuwe perspectieven.',
+    deliverables: 'al het relevante werk waarin is gewerkt tijdens de hackathon'
   },
   {
     semester: 1,
     semesterNaam: 'Semester 1 BASE',
-    activiteit: 'Film-hackathon',
+    activiteit: 'Hackathon',
     duur: '1 week',
     leeruitkomst: 'ontwerpen',
-    speelvelden: '',
-    kennis: 'Creatieve strategieën voor conceptontwikkeling en visuele communicatie',
-    vaardigheden: 'Ideeën genereren, uitwerken en visueel presenteren (storyboard, moodboard, conceptschets); Experimenteren met film, materiaal en vorm om betekenisvolle concepten te ontwikkelen',
-    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI',
+    kennis: 'Basisprincipes van storytelling en scenario schrijven; Storyboards',
+    vaardigheden: 'Experimenteren met verschillende verhaallijnen en stijlen voor film',
+    houding: 'Studenten durven risico\'s te nemen bij het experimenteren en zijn bereid om fouten te maken als onderdeel van het leerproces. Ze tonen geduld en accepteren dat goede concepten ontwikkelen tijd nodig heeft. Spelenderwijs verkennen ze mogelijkheden zonder direct te oordelen.',
+    deliverables: 'al het relevante werk waarin is gewerkt tijdens de hackathon'
   },
   {
     semester: 1,
     semesterNaam: 'Semester 1 BASE',
-    activiteit: 'Film-hackathon',
+    activiteit: 'Hackathon',
     duur: '1 week',
     leeruitkomst: 'prototype',
-    speelvelden: '',
-    kennis: 'Filmische vormgeving, montageprincipes en storytellingtechnieken',
-    vaardigheden: 'Ontwerpen vertalen naar een overtuigende filmische of visuele presentatie',
-    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI',
+    kennis: 'Basis filmtechnieken (camera, montage)',
+    vaardigheden: 'Ontwerpideeen doorvertalen naar een overtuigende eindproductie',
+    houding: 'Studenten tonen moed om imperfecte prototypes te delen en accepteren dat vroege versies ruw mogen zijn. Ze hebben lage drempel voor het maken van testversies en staan open voor feedback. Nieuwsgierigheid naar gebruikersreacties en docentenfeedback overstijgt angst voor kritiek of falen.',
+    deliverables: 'eindproductie Film'
   },
   {
     semester: 1,
     semesterNaam: 'Semester 1 BASE',
-    activiteit: 'Film-hackathon',
+    activiteit: 'Hackathon',
     duur: '1 week',
     leeruitkomst: 'verbinden',
-    speelvelden: '',
-    kennis: 'NVT',
-    vaardigheden: 'Samenwerken zonder begeleiding',
-    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI',
+    kennis: 'Geen',
+    vaardigheden: 'Samenwerken in een team en rekening houden met teamleden',
+    houding: 'Studenten tonen een meewerkende open houding door actief bij te dragen aan project/teamdoelen. Ze staan open om feedback te ontvangen en kunnen het ook geven. Ze nemen initiatief om hulp te vragen en ondersteuning te bieden aan teamgenoten. Bescheidenheid om van anderen te leren combineert met moed om eigen bijdragen te leveren.',
+    deliverables: 'Verslag van samenwerkingbinnen leerteam'
   },
   {
     semester: 1,
     semesterNaam: 'Semester 1 BASE',
-    activiteit: 'Film-hackathon',
+    activiteit: 'Hackathon',
     duur: '1 week',
     leeruitkomst: 'reflecteren',
-    speelvelden: '',
-    kennis: 'NVT',
-    vaardigheden: 'Zelfstandig reflecteren op leermomenten',
-    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.'
+    beschrijving: '',
+    speelvelden: 'Design, Technologie & AI',
+    kennis: 'Geen',
+    vaardigheden: 'Reflecteren op de samenwerking en het eigen aandeel in het teamproce',
+    houding: 'Studenten staan open om te leren van fouten en successen, tonen zich betrokken en aanwezig tijdens leeractiviteiten en feedback-momenten. Hun leergierigheid uit zich in het stellen van vragen en zoeken naar nieuwe kennis. Growth mindset helpt hen uitdagingen te zien als kansen, terwijl reflectieve houding hen bewust maakt van hun leerproces.',
+    deliverables: 'Kort reflectieverslag over het leerproces tijdens de ahackathon week'
   },
 
   // ==================== SEMESTER 2 CHALLENGING ====================

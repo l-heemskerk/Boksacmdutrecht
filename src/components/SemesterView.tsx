@@ -31,6 +31,7 @@ export function SemesterView({
 }: SemesterViewProps) {
   const [openSemesters, setOpenSemesters] = useState<number[]>([]);
   const [showIntro, setShowIntro] = useState<boolean>(true);
+  const [expandedActivities, setExpandedActivities] = useState<Set<string>>(new Set());
 
   const speelveldColors: Record<Leerlijn, string> = {
     'Design': 'bg-pink-100 text-pink-800 hover:bg-pink-200 border-pink-200',
@@ -42,6 +43,33 @@ export function SemesterView({
   };
 
   const getSpeelveldenForActivity = (activity: Activity, semesterNumber: number): Leerlijn[] => {
+    // Hardcoded mappings voor specifieke activiteiten
+    const activityNameLower = activity.name.toLowerCase();
+    
+    if (activityNameLower.includes('basecamp')) {
+      return ['Design'];
+    }
+    
+    if (activityNameLower.includes('visual design')) {
+      return ['Design', 'Technologie & AI', 'Onderzoekend Vermogen'];
+    }
+    
+    if (activityNameLower.includes('interaction design')) {
+      return ['Design', 'Technologie & AI', 'Mens & Ervaring', 'Onderzoekend Vermogen'];
+    }
+    
+    if (activityNameLower.includes('social design')) {
+      return ['Design', 'Technologie & AI', 'Mens & Ervaring', 'Maatschappij & Toekomst', 'Onderzoekend Vermogen'];
+    }
+    
+    if (activityNameLower.includes('workshopweek')) {
+      return [];
+    }
+    
+    if (activityNameLower.includes('hackathon')) {
+      return ['Design', 'Technologie & AI'];
+    }
+    
     // 1. Check explicit matches from leerlijnProgressions (High Confidence)
     const explicitMatches = leerlijnProgressions.filter(progression => {
       if (progression.semester !== semesterNumber) return false;
@@ -95,6 +123,18 @@ export function SemesterView({
         ? prev.filter(n => n !== semesterNumber)
         : [...prev, semesterNumber]
     );
+  };
+
+  const toggleActivity = (activityId: string) => {
+    setExpandedActivities(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(activityId)) {
+        newSet.delete(activityId);
+      } else {
+        newSet.add(activityId);
+      }
+      return newSet;
+    });
   };
 
   const filterSemester = (semester: Semester) => {
@@ -163,64 +203,71 @@ export function SemesterView({
 
     return (
       <Card key={activity.id} className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 bg-white">
-        <CardHeader className="bg-gray-50/50 pb-4 border-b border-gray-100">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between md:justify-start gap-3 mb-4">
-                <h3 className="text-xl font-bold text-gray-900 leading-tight">
-                  {activity.name}
-                </h3>
-              </div>
-              
-              {relevantSpeelvelden.length > 0 && (
-                <div className="mb-4">
-                  <span className="text-[11px] uppercase tracking-wider font-bold text-gray-500 block mb-2">
-                    Relevante speelvelden
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {relevantSpeelvelden.map(sv => (
-                      <Badge key={sv} variant="secondary" className={`${speelveldColors[sv]} px-2.5 py-0.5 text-xs font-semibold border`}>
-                        {sv}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {activity.description && (
-                <p className="text-gray-600 text-base leading-relaxed max-w-4xl">{activity.description}</p>
-              )}
-              
-              {/* Relations to other activities */}
-              {activity.relations && (
-                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50/50 text-blue-700 rounded-md border border-blue-100 text-sm">
-                  <Link2 className="w-4 h-4" />
-                  <span className="font-medium">Relatie:</span>
-                  <span>{activity.relations}</span>
-                </div>
-              )}
-            </div>
-
-            <div className="flex flex-row md:flex-col gap-2 shrink-0">
-              <Badge variant="outline" className="bg-white text-gray-600 border-gray-200 whitespace-nowrap justify-center">
+        {/* Activity naam en badges - altijd zichtbaar */}
+        <CardHeader className="bg-gray-50/50 border-b border-gray-100 pb-4">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <h3 className="text-xl font-bold text-gray-900 leading-tight">
+              {activity.name}
+            </h3>
+            <div className="flex gap-2 shrink-0">
+              <Badge variant="outline" className="bg-white text-gray-600 border-gray-200 whitespace-nowrap">
+                <Calendar className="w-3 h-3 mr-1.5" />
                 {activity.duration}
               </Badge>
-              <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 whitespace-nowrap justify-center">
+              <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 whitespace-nowrap">
                 {semester.level}
               </Badge>
             </div>
           </div>
+          
+          {/* Speelvelden - altijd zichtbaar */}
+          <div>
+            <span className="text-[11px] uppercase tracking-wider font-bold text-gray-500 block mb-2.5">
+              Relevante speelvelden
+            </span>
+            {relevantSpeelvelden.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {relevantSpeelvelden.map(sv => (
+                  <Badge key={sv} variant="secondary" className={`${speelveldColors[sv]} px-2.5 py-1 text-xs font-semibold border`}>
+                    {sv}
+                  </Badge>
+                ))}
+              </div>
+            ) : (
+              <span className="text-sm text-gray-500 italic">Geen</span>
+            )}
+          </div>
         </CardHeader>
-        <CardContent className="pt-0">
+        
+        {/* Beschrijving - altijd zichtbaar */}
+        {activity.description && (
+          <div className="px-6 pt-5 pb-4 bg-white">
+            <p className="text-gray-700 text-sm leading-relaxed">{activity.description}</p>
+          </div>
+        )}
+        
+        {/* Relations */}
+        {activity.relations && (
+          <div className="px-6 pb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-md border border-blue-100 text-sm">
+              <Link2 className="w-4 h-4" />
+              <span className="font-medium">Relatie:</span>
+              <span>{activity.relations}</span>
+            </div>
+          </div>
+        )}
+
+        {/* Competenties en deliverables */}
+        <CardContent className="pt-0 pb-5">
           <Accordion type="multiple" className="w-full">
             {/* Competenties per leeruitkomst */}
             {!activity.excludeCompetenciesSection && activity.learningOutcomeDetails && activity.learningOutcomeDetails.length > 0 && (
               <AccordionItem value="competencies" className="border-none">
-                <AccordionTrigger className="hover:no-underline">
+                <AccordionTrigger className="hover:no-underline py-3">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2 px-3 py-1 bg-blue-50 rounded">
                       <Brain className="w-4 h-4 text-blue-600" />
-                      <span>Competenties per leeruitkomst</span>
+                      <span className="text-sm font-medium">Competenties per leeruitkomst</span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -283,14 +330,9 @@ export function SemesterView({
                                 <Heart className="w-4 h-4 text-pink-600" />
                                 <h5 className="text-pink-900">Houding</h5>
                               </div>
-                              <ul className="space-y-2">
-                                {detail.houding.map((item, i) => (
-                                  <li key={i} className="text-gray-700 text-sm flex items-start gap-2">
-                                    <span className="text-pink-600 mt-0.5">•</span>
-                                    <span>{item}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                              <p className="text-gray-700 text-sm leading-relaxed">
+                                {detail.houding.join(' ')}
+                              </p>
                             </div>
                           )}
                         </div>
@@ -304,11 +346,11 @@ export function SemesterView({
             {/* Deliverables */}
             {activity.professionalProducts && activity.duration !== '1 week' && (
               <AccordionItem value="products" className="border-none">
-                <AccordionTrigger className="hover:no-underline">
+                <AccordionTrigger className="hover:no-underline py-3">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2 px-3 py-1 bg-green-50 rounded">
                       <Package className="w-4 h-4 text-green-600" />
-                      <span>Deliverables</span>
+                      <span className="text-sm font-medium">Deliverables</span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -380,7 +422,7 @@ export function SemesterView({
                 Semesteroverzicht
               </h2>
               <p className="text-sm text-gray-700 leading-relaxed">
-                Dit semesteroverzicht laat per semester zien welke inhoud centraal staan. Per onderwijsactiviteit worden de kennis, vaardigheden, houding en deliverables inzichtelijk gemaakt.
+                Dit semesteroverzicht laat per semester zien welke inhoud centraal staan. Per onderwijsactiviteit worden de minimaal benodigde kennis, vaardigheden, houding en deliverables inzichtelijk gemaakt.
               </p>
             </div>
             <button

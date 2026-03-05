@@ -20,6 +20,12 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("semester");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Reorder semesters: 1, 2, 3, 4, 5 (PRAKTIJK), 6 (SPECIALISATIE), 7
+  const reorderedSemesters = [...semesters].sort((a, b) => {
+    const order = [1, 2, 3, 4, 5, 6, 7];
+    return order.indexOf(a.number) - order.indexOf(b.number);
+  });
+
   const tabItems = [
     { value: 'semester', label: 'Semesteroverzicht', icon: Layers },
     { value: 'leerlijnen', label: 'Leerlijnen', icon: Map },
@@ -127,7 +133,7 @@ export default function App() {
                   <TabsTrigger 
                     key={item.value}
                     value={item.value}
-                    className="flex items-center justify-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm px-6 py-2.5 rounded-lg transition-all duration-200 font-medium whitespace-nowrap"
+                    className="flex items-center justify-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm px-6 py-2.5 rounded-lg transition-all duration-200 font-medium whitespace-nowrap text-sm"
                   >
                     <Icon className="w-4 h-4" />
                     {item.label}
@@ -139,7 +145,7 @@ export default function App() {
 
           <TabsContent value="semester">
             <SemesterView
-              semesters={semesters}
+              semesters={reorderedSemesters}
               selectedOutcomes={selectedOutcomes}
               searchQuery={""}
               selectedCompetencies={selectedCompetencies}

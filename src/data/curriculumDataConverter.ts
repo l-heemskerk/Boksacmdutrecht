@@ -23,12 +23,12 @@ export function generateBeschrijving(semester: number, activiteit: string, leeru
   
   // Specifieke beschrijvingen per activiteit type
   if (semester === 1) {
-    if (activityLower.includes('basecamp')) return 'Introductieweek waarin studenten voor het eerst kennismaken met design thinking en samenwerken in een ontwerpcontext. Basecamp vormt het startpunt van de CMD-opleiding en legt de basis voor de ontwerpvaardigheden die in Visual Design (Base) en Interaction Design (Base) verder ontwikkeld worden.';
-    if (activityLower.includes('visual')) return 'Ontwikkeling van visuele ontwerpvaardigheden met focus op compositie, typografie en kleurgebruik. Studenten leren de basisprincipes van visuele communicatie die in Challenge verder worden toegepast in Opdrachtgeversprojecten en in Explore verdiept worden in Visual Design waar ontwerpfilosofie centraal staat.';
-    if (activityLower.includes('interaction')) return 'Studenten leren ontwerpen van gebruiksvriendelijke interfaces en interacties met focus op UX-principes. Deze basis wordt in Challenge toegepast in projecten voor echte opdrachtgevers en in Explore verder ontwikkeld in Persuasive Communication waar gedragsbeïnvloeding centraal staat.';
-    if (activityLower.includes('social')) return 'Ontwerpen voor sociale impact met aandacht voor gebruikersbehoeften en gedrag. Studenten maken kennis met mens-gericht ontwerpen wat de basis legt voor latere projecten zoals Opdrachtgeversproject (Challenge) en Persuasive Communication (Explore).';
-    if (activityLower.includes('workshop')) return 'Kennismaking met nieuwe tools en methoden uit de ontwerppraktijk zoals prototyping tools, development frameworks en design software. Deze technische basis is essentieel voor alle latere onderwijsactiviteiten en bereidt studenten voor op complexere projecten in Challenge en Explore.';
-    if (activityLower.includes('film')) return 'Intensieve creatieve hackathon waarbij studenten in teams binnen één week een filmisch product maken. Studenten leren snel itereren en samenwerken onder tijdsdruk. Deze ervaring bereidt direct voor op Game hackathon (Explore) en Design hackathon (Specialisatie Semester) waar vergelijkbare intensieve ontwerpprocessen centraal staan.';
+    if (activityLower.includes('basecamp')) return 'Introductieweek waarin studenten voor het eerst kennismaken met design thinking en samenwerken met het leerteam. Basecamp vormt het startpunt van de CMD-opleiding en is vooral gericht op kennismaking, samenwerken en een zachte landing bij CMD-Utrecht.';
+    if (activityLower.includes('visual')) return 'Ontwikkeling van visuele ontwerpvaardigheden met focus op compositie, typografie en kleurgebruik. Studenten leren in projectvorm de basisprincipes van visuele communicatie die in Challenge verder worden toegepast in Opdrachtgeversprojecten.';
+    if (activityLower.includes('interaction')) return 'Studenten leren ontwerpen van gebruiksvriendelijke interfaces en interacties met focus op UX en UI-principes. Deze basis elementen van IxD worden in Challenge toegepast en in Explore verder ontwikkeld in Persuasive Communication waar gedragsbeïnvloeding centraal staat.';
+    if (activityLower.includes('social')) return 'Ontwerpen voor sociale impact met aandacht voor gebruikersbehoeften en immersieve fysieke ervaringen. Studenten maken kennis met mens-gericht ontwerpen wat de basis legt voor latere projecten zoals Opdrachtgeversproject (Challenge) en Persuasive Communication (Explore).';
+    if (activityLower.includes('workshop')) return 'Kennismaking met nieuwe tools en methoden uit de ontwerppraktijk zoals prototyping tools, development frameworks en design software. Deze inzichten uit de workshops kunnen bij latere onderwijsactiviteiten ingezet worden en bereidt studenten voor op complexere projecten in Challenge en Explore.';
+    if (activityLower.includes('film') || activityLower.includes('hackathon')) return 'In deze intensieve, kortlopende hackathon werken studenten interdisciplinair aan het bedenken, prototypen en presenteren van concrete oplossingen binnen een afgebakende opdracht. De hackathons stimuleren experiment, samenwerking en het doelgericht inzetten van vakinhoudelijke en technische expertise onder tijdsdruk.';
   }
   
   if (semester === 2) {
@@ -80,7 +80,17 @@ export function assignSpeelvelden(activiteit: string, leeruitkomst: string, seme
   const activityLower = activiteit.toLowerCase();
   const leeruitkomstLower = leeruitkomst.toLowerCase();
   
-  // Specifieke toewijzingen per activiteit type
+  // Semester 1 specifieke toewijzingen
+  if (semester === 1) {
+    if (activityLower.includes('basecamp')) return 'Design';
+    if (activityLower.includes('visual')) return 'Design, Technologie & AI, Onderzoekend Vermogen';
+    if (activityLower.includes('interaction')) return 'Design, Technologie & AI, Mens & Ervaring, Onderzoekend Vermogen';
+    if (activityLower.includes('workshop')) return '';
+    if (activityLower.includes('social')) return 'Design, Technologie & AI, Mens & Ervaring, Maatschappij & Toekomst, Onderzoekend Vermogen';
+    if (activityLower.includes('film') || activityLower.includes('hackathon')) return 'Design, Technologie & AI';
+  }
+  
+  // Algemene toewijzingen voor andere semesters
   if (activityLower.includes('visual')) return 'Design';
   if (activityLower.includes('interaction')) return 'Design, Technologie & AI';
   if (activityLower.includes('social')) return 'Mens & Ervaring, Design';
@@ -420,7 +430,7 @@ function enrichActivitiesWithProducts(activity: Activity): Activity {
   
   // Format de beroepsproducten als string per leeruitkomst
   const productsByOutcome = relevantProducts.map(p => {
-    return `**${p.outcome.charAt(0).toUpperCase() + p.outcome.slice(1)}**: ${p.products.join('; ')}`;
+    return `**${p.outcome.charAt(0).toUpperCase() + p.outcome.slice(1)}**\n${p.products.join('; ')}`;
   }).join('\n\n');
   
   return {
